@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import { TextField, Button, Typography, OutlinedInput, InputAdornment, IconButton, FormControl, InputLabel } from '@material-ui/core'
 import { LoginContainer, FormContainer, Logo } from './styles'
 import logo from '../../assets/black-logo.svg'
-import { useForm } from '../../hooks/useForm2.js'
+import { useForm } from '../../hooks/useForm'
 import { Visibility, VisibilityOff } from '@material-ui/icons'
 
 const LoginPage = () => {
