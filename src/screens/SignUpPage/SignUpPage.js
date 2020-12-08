@@ -31,8 +31,17 @@ const SignUpPage = () => {
     setConfirmPasswordVisibility(!confirmPasswordVisibility)
   }
 
-  const onSubmitForm = (event) => {
+  const checkIfPasswordsMatch = (event) => {
     event.preventDefault()
+
+    if ( form.password !== confirmPassword ) {
+      window.alert('As senhas precisam ser iguais!')
+    }else {
+      onSubmitForm(event)
+    }
+  }
+
+  const onSubmitForm = () => {
     signUp(form, history)
   }
 
@@ -40,7 +49,7 @@ const SignUpPage = () => {
     <LoginContainer>
       <Logo src={logo} />
       <Typography variant="h6" align="center">Cadastrar</Typography>
-      <FlexForm autoComplete="off" onSubmit={onSubmitForm}>
+      <FlexForm autoComplete="off" onSubmit={checkIfPasswordsMatch}>
         <TextField
           required
           label="Nome"
