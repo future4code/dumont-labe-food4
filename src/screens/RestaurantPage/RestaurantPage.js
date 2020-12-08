@@ -5,7 +5,7 @@ import {RestaurantAll, RestaurantContainer} from './styled'
 import {useRequestData} from '../../hooks/useRequestData'
 import { BASE_URL } from '../../constants/urls'
 import {useParams} from 'react-router-dom'
-import NavBar from '../../components/NavBar'
+import NavBar from '../../components/NavBar/NavBar'
 
 const RestaurantPage = () => {
 const params = useParams()
