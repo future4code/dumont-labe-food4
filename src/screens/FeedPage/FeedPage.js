@@ -5,9 +5,8 @@ import { BASE_URL } from '../../constants/urls'
 import { useRequestData } from '../../hooks/useRequestData'
 
 const FeedPage = () => {
-  const [data, getData] = useRequestData(`${BASE_URL}/restaurants`)
-  console.log(data)
-  console.log(getData)
+  const getRestaurants = useRequestData(`${BASE_URL}/restaurants`, undefined)
+  console.log(getRestaurants)
 
   return (
     <div>
