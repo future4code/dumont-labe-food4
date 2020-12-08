@@ -1,9 +1,9 @@
 import React from 'react'
-import NavBar from '../../components/NavBar'
+import NavBar from '../../components/NavBar/NavBar'
 import RestaurantCard from '../../components/RestaurantCard'
 import { BASE_URL } from '../../constants/urls'
 import { useRequestData } from '../../hooks/useRequestData'
-import { FeedGrid } from './styles'
+import { RestaurantCardContainer, FeedContainer } from './styles'
 
 const FeedPage = () => {
   const getRestaurants = useRequestData(`${BASE_URL}/restaurants`, undefined)
@@ -11,10 +11,10 @@ const FeedPage = () => {
 
   return (
     
-    <div>
+    <FeedContainer>
         <NavBar />
         <p>Filtro</p>
-        <FeedGrid>
+        <RestaurantCardContainer>
           {getRestaurants && getRestaurants.restaurants.map((restaurant) => {
             return (
               <RestaurantCard
@@ -23,11 +23,12 @@ const FeedPage = () => {
                 deliveryTime = {restaurant.deliveryTime}
                 shipping = {restaurant.shipping}
                 name = {restaurant.name}
+                image = {restaurant.logoUrl}
              />
             )
           })}
-        </FeedGrid>
-    </div>
+        </RestaurantCardContainer>
+    </FeedContainer>
   )
 }
 
