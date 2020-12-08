@@ -1,5 +1,5 @@
 import axios from 'axios'
-import { BASE_URL } from '../constants/urls'
+import { BASE_URL, axiosConfig } from '../constants/urls'
 import { goToAdress, goToFeed } from '../router/coordinator'
 
 export const signUp = (body, history) => {
@@ -22,5 +22,17 @@ export const login = (body, history) => {
       .catch((error) => {
         console.log(error.message)
         window.alert("Email ou senha incorretos")
+      })
+}
+
+export const addAdress = (body, history) => {
+    axios.put(`${BASE_URL}/address`, body, axiosConfig)
+      .then((res) => {
+        window.alert("Endereço cadastrado com sucesso!")
+        goToFeed(history)
+      })
+      .catch((error) => {
+        console.log(error.message)
+        window.alert("Algo deu errado, confira suas informações")
       })
 }
