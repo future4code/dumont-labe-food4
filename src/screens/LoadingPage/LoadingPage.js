@@ -3,10 +3,17 @@ import styled from 'styled-components'
 import logo from '../../assets/white-logo.svg'
   
 const LoadingContainer=styled.div`
+  display:flex;
+  flex-direction:column;
+  align-items:center;
   width: 360px;
   height: 640px;
   padding: 288px 117px 287px;
   background-color: #000000;
+  img{
+    height:300px;
+    width: 300px;
+  }
 `
 
 const AllLoadingContainer=styled.div`
