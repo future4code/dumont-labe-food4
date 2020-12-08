@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { useHistory } from 'react-router-dom'
-import { TextField, Button, InputLabel, FormControl, Typography } from '@material-ui/core';
+import { TextField, Button, InputLabel, FormControl, FormHelperText, Typography } from '@material-ui/core';
 import { useForm } from '../../hooks/useForm';
 import { FlexForm } from './styles';
 import { LoginContainer, FormContainer, Logo } from '../LoginPage/styles';
@@ -20,11 +20,9 @@ const SignUpPage = () => {
   const [confirmPassword, setConfirmPassword] = useState("")
   const [passwordVisibility, setPasswordVisibility] = useState(false)
   const [confirmPasswordVisibility, setConfirmPasswordVisibility] = useState(false)
+  const [errorState, setErrorState] = useState(false)
+  const [errorMessage, setErrorMessage] = useState("")
   
-  const handleConfirmPassword = (event) => {
-    setConfirmPassword(event.target.value)
-  }
-
   const handlePasswordVisibility = () => {
     setPasswordVisibility(!passwordVisibility)
   }
@@ -33,14 +31,20 @@ const SignUpPage = () => {
     setConfirmPasswordVisibility(!confirmPasswordVisibility)
   }
 
+  const handleConfirmPassword = (event) => {
+    setConfirmPassword(event.target.value)
+
+    if ( form.password !== event.target.value ) {
+      setErrorState(true)
+      setErrorMessage('Deve ser a mesma que a anterior')
+    }else {
+      setErrorState(false)
+    }
+  }
+
   const checkIfPasswordsMatch = (event) => {
     event.preventDefault()
-
-    if ( form.password !== confirmPassword ) {
-      window.alert('As senhas precisam ser iguais!')
-    }else {
-      onSubmitForm(event)
-    }
+    errorState ? window.alert('As senhas precisam ser iguais!') : onSubmitForm()  
   }
 
   const onSubmitForm = () => {
@@ -108,7 +112,7 @@ const SignUpPage = () => {
           />
         </FormControl>
 
-        <FormControl variant="outlined">
+        <FormControl error={errorState} variant="outlined">
           <InputLabel htmlFor="outlined-confirm-password">Confirmar</InputLabel>
           <OutlinedInput
             id="outlined-confirm-password"
@@ -132,6 +136,7 @@ const SignUpPage = () => {
             }
             labelWidth={70}
           />
+          <FormHelperText id="component-error-text">{errorState ? errorMessage : null}</FormHelperText>
         </FormControl>
         <Button type="submit" variant="contained" color="primary">
           Criar
