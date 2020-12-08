@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { useHistory } from 'react-router-dom'
 import { TextField, Button, InputLabel, FormControl } from '@material-ui/core';
 import { useForm } from '../../hooks/useForm';
 import { FlexForm } from './styles';
@@ -7,8 +8,10 @@ import InputAdornment from '@material-ui/core/InputAdornment';
 import Visibility from '@material-ui/icons/Visibility';
 import VisibilityOff from '@material-ui/icons/VisibilityOff';
 import IconButton from '@material-ui/core/IconButton';
+import { signUp } from '../../services/user'
 
 const SignUpPage = () => {
+  const history = useHistory()
   const { form, onChange } = useForm({ name: "", email: "", cpf: "", password: "" })
   const [confirmPassword, setConfirmPassword] = useState("")
   const [passwordVisibility, setPasswordVisibility] = useState(false)
@@ -26,8 +29,13 @@ const SignUpPage = () => {
     setConfirmPasswordVisibility(!confirmPasswordVisibility)
   }
 
+  const onSubmitForm = (event) => {
+    event.preventDefault()
+    signUp(form, history)
+  }
+
   return (
-    <FlexForm autoComplete="off">
+    <FlexForm autoComplete="off" onSubmit={onSubmitForm}>
       <p>Cadastrar</p>
       <TextField
         required
