@@ -4,7 +4,8 @@ import { useForm } from "../../hooks/useForm"
 import { useHistory } from 'react-router-dom'
 import { addAdress } from "../../services/user"
 import { useProtectedPage } from "../../hooks/useProtectedPage"
-
+import {useRequestData} from '../../hooks/useRequestData'
+import { BASE_URL } from '../../constants/urls'
 
 const AddressPage = () => {
   useProtectedPage()
@@ -12,17 +13,23 @@ const AddressPage = () => {
 
   const { form, onChange, reset } = useForm({ street: "", number: "", neighbourhood: "", city: "", state: "", complement: ""})
 
+  const getAllAddress = useRequestData(`${BASE_URL}/profile/address`,undefined)
+
+  console.log(getAllAddress)
   const handleSubmission = (e) => {
     e.preventDefault()
     reset()
     addAdress(form, history)
   }
 
-  console.log(form)
+
+
+ 
 
   return (
     <FormContainer onSubmit={handleSubmission}>
       <Title>Meu endereço</Title>
+      {/* <p>{getAllAddress? getAllAddress.address.street:null}</p> */}
       <Input
         required
         id="outlined-required"
@@ -33,6 +40,7 @@ const AddressPage = () => {
         name="street"
         value={form.street}
         onChange={onChange}
+        defaultValue= {getAllAddress? getAllAddress.address.street:null}
       />
       <Input
         required
@@ -44,6 +52,7 @@ const AddressPage = () => {
         name="number"
         value={form.number}
         onChange={onChange}
+        defaultValue="Hello World"
       />
       <Input
         id="outlined-required"
@@ -54,6 +63,7 @@ const AddressPage = () => {
         name="complement"
         value={form.complement}
         onChange={onChange}
+        defaultValue="Hello World"
       />
       <Input
         required
@@ -65,6 +75,7 @@ const AddressPage = () => {
         name="neighbourhood"
         value={form.neighbourhood}
         onChange={onChange}
+        defaultValue="Hello World"
       />
       <Input
         required
@@ -76,6 +87,7 @@ const AddressPage = () => {
         name="city"
         value={form.city}
         onChange={onChange}
+        defaultValue="Hello World"
       />
       <Input
         required
@@ -87,6 +99,7 @@ const AddressPage = () => {
         name="state"
         value={form.state}
         onChange={onChange}
+        defaultValue="Hello World"
       />
       <ButtonSave variant="contained" color="primary" type="submit">
         Salvar
