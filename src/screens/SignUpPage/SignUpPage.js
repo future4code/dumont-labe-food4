@@ -11,14 +11,16 @@ import VisibilityOff from '@material-ui/icons/VisibilityOff';
 import IconButton from '@material-ui/core/IconButton';
 import { signUp } from '../../services/user'
 import logo from '../../assets/black-logo.svg'
+import { cpfMask } from '../../util/functions'
 
 const SignUpPage = () => {
   const history = useHistory()
   const { form, onChange } = useForm({ name: "", email: "", cpf: "", password: "" })
+  const formatedCPF = cpfMask(form.cpf)
   const [confirmPassword, setConfirmPassword] = useState("")
   const [passwordVisibility, setPasswordVisibility] = useState(false)
   const [confirmPasswordVisibility, setConfirmPasswordVisibility] = useState(false)
-
+  
   const handleConfirmPassword = (event) => {
     setConfirmPassword(event.target.value)
   }
@@ -77,7 +79,7 @@ const SignUpPage = () => {
           variant="outlined"
           placeholder="000.000.000-00"
           name="cpf"
-          value={form.cpf}
+          value={formatedCPF}
           onChange={onChange}
         />
         <FormControl variant="outlined">
