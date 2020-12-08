@@ -125,7 +125,7 @@ const FoodCard = () => {
                     <Description>Pão, carne, queijo, picles e molho</Description>
                     <Price>R$ 20,00</Price>
                 </div>
-                {changeButton(1)}
+                {changeButton(0)}
                 
             </FoodContainer>
         
