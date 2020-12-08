@@ -1,9 +1,16 @@
 import React from 'react'
+import { Typography } from '@material-ui/core'
+import { ErrorContainer } from './styles'
 
 const ErrorPage = () => {
   return (
     <div>
-      ErrorPage
+      <div>
+        app bar
+      </div>
+      <ErrorContainer>
+        <Typography align="center" variant="h4">Ops! Página não encontrada :(</Typography>
+      </ErrorContainer>
     </div>
   )
 }

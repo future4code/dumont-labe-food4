@@ -1,35 +1,27 @@
-import React, { useState } from "react";
-import {
-  TextField,
-  Button,
-  Typography,
-  OutlinedInput,
-  InputAdornment,
-  IconButton,
-  FormControl,
-  InputLabel,
-} from "@material-ui/core";
-import { LoginContainer, FormContainer, Logo } from "./styles";
-import logo from "../../assets/black-logo.svg";
-import { useForm } from "../../hooks/useForm";
-import { Visibility, VisibilityOff } from "@material-ui/icons";
-import { login } from "../../services/user";
-import { useHistory } from "react-router-dom";
+import React, { useState } from 'react'
+import { TextField, Button, Typography, OutlinedInput, InputAdornment, IconButton, FormControl, InputLabel } from '@material-ui/core'
+import { LoginContainer, FormContainer, Logo } from "./styles"
+import logo from '../../assets/black-logo.svg'
+import { useForm } from '../../hooks/useForm'
+import { Visibility, VisibilityOff } from '@material-ui/icons'
+import { login } from '../../services/user'
+import { useHistory } from 'react-router-dom'
+import { goToSignUp } from '../../router/coordinator'
 
 const LoginPage = () => {
-  const history = useHistory();
-  const { form, onChange, reset } = useForm({ email: "", password: "" });
-  const [passwordVisibility, setPasswordVisibility] = useState(false);
+  const history = useHistory()
+  const { form, onChange, reset } = useForm({ email: "", password: "" })
+  const [passwordVisibility, setPasswordVisibility] = useState(false)
 
   const handlePasswordVisibility = () => {
-    setPasswordVisibility(!passwordVisibility);
+    setPasswordVisibility(!passwordVisibility)
   };
 
   const handleSubmission = (e) => {
     e.preventDefault();
     reset();
     login(form, history);
-  };
+  }
 
   return (
     <LoginContainer>
@@ -73,6 +65,7 @@ const LoginPage = () => {
           LOGAR
         </Button>
       </FormContainer>
+      <Typography onClick={() => goToSignUp(history)} align="center" variant="subtitle1">Não possui cadastro? Clique aqui</Typography>
     </LoginContainer>
   );
 };
