@@ -4,8 +4,11 @@ import { LoginContainer, FormContainer, Logo } from './styles'
 import logo from '../../assets/black-logo.svg'
 import { useForm } from '../../hooks/useForm'
 import { Visibility, VisibilityOff } from '@material-ui/icons'
+import { login } from '../../services/user'
+import { useHistory } from 'react-router-dom'
 
 const LoginPage = () => {
+  const history = useHistory()
   const { form, onChange, reset } = useForm({ email: "", password: "" })
   const [passwordVisibility, setPasswordVisibility] = useState(false)
 
@@ -13,11 +16,18 @@ const LoginPage = () => {
     setPasswordVisibility(!passwordVisibility)
   }
 
+  const handleSubmission = (e) => {
+    e.preventDefault()
+    reset()
+    login(form, history)
+  }
+
+
   return (
     <LoginContainer>
       <Logo src={logo} />
       <Typography variant="h6" align="center">Entrar</Typography>
-      <FormContainer>
+      <FormContainer onSubmit={handleSubmission}>
         <TextField name="email" value={form.email} onChange={onChange} type="email" label="Email" placeholder="email@email.com" required variant="outlined" />
 
         <FormControl variant="outlined">
