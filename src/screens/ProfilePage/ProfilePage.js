@@ -3,14 +3,18 @@ import { Typography, IconButton } from '@material-ui/core'
 import { BaseContainer, FlexBox, Divisor } from './profile-styles'
 import OrdesHistoryCard from '../../components/OrdersHistoryCard/OrdersHistoryCard'
 import EditIcon from '@material-ui/icons/Edit';
+import { useHistory } from 'react-router-dom';
+import { goToEditProfile, goToAdress } from '../../router/coordinator';
 
 const ProfilePage = () => {
+  const history = useHistory()
+
   return (
     <div>
       <FlexBox>
         <BaseContainer>
           <Typography variant="h6">Bruna Oliveira</Typography>
-          <IconButton>
+          <IconButton onClick={() => goToEditProfile(history)}>
             <EditIcon/>
           </IconButton>
         </BaseContainer>
@@ -20,7 +24,7 @@ const ProfilePage = () => {
       <FlexBox greyBackground>
         <BaseContainer>
           <Typography color="textSecondary" variant="h6">Endereço cadastrado</Typography>
-          <IconButton>
+          <IconButton onClick={() => goToAdress(history)}>
             <EditIcon/>
           </IconButton>
         </BaseContainer>
