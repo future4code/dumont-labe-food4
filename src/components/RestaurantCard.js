@@ -19,7 +19,7 @@ const useStyles = makeStyles({
   },
 });
 
-export default function MediaCard(props) {
+export default function RestaurantCard(props) {
   const classes = useStyles();
   const history =useHistory()
 
