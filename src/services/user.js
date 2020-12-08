@@ -28,6 +28,7 @@ export const login = (body, history) => {
 export const addAdress = (body, history) => {
     axios.put(`${BASE_URL}/address`, body, axiosConfig)
       .then((res) => {
+        localStorage.setItem("token", res.data.token)
         window.alert("Endereço cadastrado com sucesso!")
         goToFeed(history)
       })
