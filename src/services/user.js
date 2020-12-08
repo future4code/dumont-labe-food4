@@ -8,6 +8,8 @@ export const signUp = (body, history) => {
         localStorage.setItem("token", response.data.token)
         goToAdress(history)
     }).catch(error => {
+        error.message === "Request failed with status code 409" ? 
+        window.alert("E-mail ou CPF já cadastrados") :
         console.log(error.message)
     })
 }
