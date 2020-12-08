@@ -4,5 +4,6 @@ export const FlexForm = styled.form`
     display: flex;
     flex-direction: column;
     gap: 16px;
-    padding: 16px;
+    justify-content: space-around;
+    margin-top: 16px;
 `
