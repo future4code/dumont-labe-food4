@@ -10,6 +10,7 @@ import CartPage from '../screens/CartPage/CartPage'
 import ProfilePage from '../screens/ProfilePage/ProfilePage'
 import {TextField, Button} from '@material-ui/core'
 import EditProfilePage from '../screens/ProfilePage/EditProfilePage'
+import LoadingPage from '../screens/LoadingPage/LoadingPage'
 
 const Router = () => {
     return (
@@ -38,6 +39,9 @@ const Router = () => {
                 </Route>
                 <Route exact path={'/editprofile'} >
                     <EditProfilePage />
+                </Route>
+                <Route exact path={'/loadingpage'} >
+                    <LoadingPage />
                 </Route>
                 <Route>
                     <ErrorPage />
