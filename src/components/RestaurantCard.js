@@ -9,44 +9,66 @@ import CardMedia from '@material-ui/core/CardMedia';
 import Typography from '@material-ui/core/Typography';
 import {useHistory} from 'react-router-dom'
 import {goToRestaurantDetails} from '../router/coordinator'
+import styled from 'styled-components'
 
 const useStyles = makeStyles({
   root: {
-    maxWidth: 345,
+    maxWidth: 360,
   },
   media: {
     height: 140,
   },
 });
 
+const CardContainer = styled(Card)`
+  margin-top: 10px;
+  
+`
+
+// const Image = styled(CardMedia)`
+//   width: 360px;
+//   height: 120px;
+// `
+const PriceAndTime = styled.div`
+  display:flex;
+  justify-content:space-between;
+`
 export default function RestaurantCard(props) {
   const classes = useStyles();
   const history =useHistory()
 
   return (
-    <Card onClick={()=> goToRestaurantDetails(history, props.id)}>
+    <CardContainer onClick={()=> goToRestaurantDetails(history, props.id)}>
       <CardActionArea>
-        <CardMedia
-          className={classes.media}
-          image="https://gooutside-static-cdn.akamaized.net/wp-content/uploads/sites/3/2020/02/comida-porcaria-efeito-no-cerebro-1280x720.jpg"
-          title="Contemplative Reptile"
+        <CardMedia className={classes.media}
+          image= {props.image}
         />
         <CardContent>
           <Typography gutterBottom variant="p" component="h3" color="primary"> 
-           Bullguer-Vila Madalena
+           {props.name}
           </Typography>
           
           <Typography variant="body2" color="textSecondary" component="p">
-            Burguer
+            {props.category}
           </Typography>
+
+
+          <PriceAndTime>
           <Typography variant="body2" color="textSecondary" component="p">
-            50-60 mim - Frete:R$ 6,00
+            {props.deliveryTime} minutos
           </Typography>
+
           <Typography variant="body2" color="textSecondary" component="p">
-            Rua Fradique Coutinho, 345 - Vila Madalena
+            Frete R$ {props.shipping}
+          </Typography>
+          </PriceAndTime>
+          
+
+          <Typography variant="body2" color="textSecondary" component="p">
+           {props.address}
           </Typography>
         </CardContent>
       </CardActionArea>
-    </Card>
+    </CardContainer>
   );
 }
