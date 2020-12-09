@@ -68,7 +68,7 @@ const ButtonAdd = styled.div`
   border-radius: 8px 0 8px 0;
   border: solid 1px #5cb646;
   color:#5cb646;
-  
+  cursor: pointer;
 `
 const ButtonRemove = styled.div`
   width: 70px;
@@ -78,7 +78,7 @@ const ButtonRemove = styled.div`
   border-radius: 8px 0 8px 0;
   border: solid 1px #e02020;
   color:#e02020;
-  
+  cursor: pointer;
 `
 const Count = styled.div`
   width: 15px;
@@ -97,21 +97,32 @@ const Count = styled.div`
 //   padding: 0 16px;
 
 const FoodCard = (props) => {
-  const {cart, option} = useContext(GlobalStateContext)
+  const {cart} = useContext(GlobalStateContext)
+  const [open, setOpen] = useState(false)
+
+  const handleClickOpen = () => {
+    setOpen(true)
+  }
+
+  const handleClose = () => {
+    setOpen(false)
+  }
 
   const changeButton = () => {
     const index = cart.findIndex((i) => i.id === props.id)
     if (index === -1) {
       return (
         <ButtonContainer>
-          <ButtonAdd onClick={props.handleClickOpen}> Adicionar </ButtonAdd>
+          <ButtonAdd onClick={handleClickOpen}> Adicionar </ButtonAdd>
         </ButtonContainer>
       )
       
     } else {
       return (
         <ButtonContainer>
-          <Count>{option}</Count>
+          {cart.map((item) => {
+            return item.id === props.id && <Count>{item.amount}</Count>
+          })}
           <ButtonRemove onClick={props.removeItemFromCart}> Remover </ButtonRemove>
         </ButtonContainer>
 
@@ -130,7 +141,7 @@ const FoodCard = (props) => {
         <Price>R$ {props.price}</Price>
       </div>
       {changeButton()}
-      <AlertDialog addItemToCart={props.addItemToCart} open={props.open} />
+      <AlertDialog handleClose={handleClose} addItemToCart={props.addItemToCart} open={open} />
     </FoodContainer>
 
 

@@ -4,9 +4,7 @@ import GlobalStateContext from "./GlobalStateContext"
 const GlobalState = (props) => {
   const [cart, setCart] = useState([])
 
-  const [option, setOption] = useState("")
-
-  const data = {cart, setCart, option, setOption}
+  const data = {cart, setCart}
 
   return (
     <GlobalStateContext.Provider value={data}>

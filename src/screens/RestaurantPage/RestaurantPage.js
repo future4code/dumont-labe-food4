@@ -1,4 +1,4 @@
-import React, { useContext, useState } from 'react'
+import React, { useContext } from 'react'
 import FoodCard from '../../components/FoodCard'
 import RestaurantCard from '../../components/RestaurantCard'
 import {RestaurantAll, RestaurantContainer} from './styled'
@@ -7,29 +7,22 @@ import { BASE_URL } from '../../constants/urls'
 import {useParams} from 'react-router-dom'
 import NavBar from '../../components/NavBar/NavBar'
 import GlobalStateContext from '../../global/GlobalStateContext'
+import OptionContext from '../../context/OptionContext'
 
 const RestaurantPage = () => {
-  const {cart, setCart, option} = useContext(GlobalStateContext)
-  const [open, setOpen] = useState(false)
+  const {cart, setCart} = useContext(GlobalStateContext)
+  const {option} = useContext(OptionContext)
 
   const {id} = useParams()
   const getDetails = useRequestData(`${BASE_URL}/restaurants/${id}`,undefined)
 
-  const handleClickOpen = () => {
-    setOpen(true);
-  }
-
   const addItemToCart = (newItem) => {
-    const index = cart.findIndex((i) => i.id === newItem.id)
     let newCart = [...cart]
-    if (index === -1) {
-      newCart.push({ ...newItem, amount: {option} })
+    
+    newCart.push({ ...newItem, amount: option })
       
-    }
-
     setCart(newCart);
     alert(`${newItem.name} foi adicionado ao seu carrinho!`)
-    setOpen(false)
   }
 
   const removeItemFromCart = (itemToRemove) => {
@@ -42,8 +35,6 @@ const RestaurantPage = () => {
     }
     setCart(newCart)
   }
-
-  console.log(cart)
 
   return (
     <RestaurantAll>
@@ -60,8 +51,6 @@ const RestaurantPage = () => {
             {getDetails && getDetails.restaurant.products.map((item)=>{
               return(
                 <FoodCard
-                  open={open}
-                  handleClickOpen={handleClickOpen}
                   removeItemFromCart={() => removeItemFromCart(item)}
                   addItemToCart={() => addItemToCart(item)}
                   category={item.category}

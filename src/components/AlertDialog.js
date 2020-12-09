@@ -8,17 +8,21 @@ import DialogTitle from "@material-ui/core/DialogTitle";
 import InputLabel from "@material-ui/core/InputLabel";
 import FormControl from "@material-ui/core/FormControl";
 import Select from "@material-ui/core/Select";
-import GlobalStateContext from "../global/GlobalStateContext";
+import OptionContext from "../context/OptionContext";
 
 const AlertDialog = (props) => {
-  const {option, setOption} = useContext(GlobalStateContext)
+  const {option, setOption} = useContext(OptionContext)
 
   const handleSelect = (e) => {
     setOption(e.target.value)
   }
 
 
-  console.log(option)
+  const handleCart = () => {
+    props.addItemToCart()
+    props.handleClose()
+  }
+
   return (
     <div>
       <Dialog
@@ -35,8 +39,8 @@ const AlertDialog = (props) => {
               <InputLabel htmlFor="outlined-age-native-simple">
                 Quantidade
               </InputLabel>
-              <Select onChange={handleSelect} value={option} native label="Quantidade">
-                <option aria-label="None" value="" />
+              <Select required onChange={handleSelect} value={option} label="Quantidade">
+                <option aria-label="None" disabled />
                 <option value={1}>1</option>
                 <option value={2}>2</option>
                 <option value={3}>3</option>
@@ -52,7 +56,7 @@ const AlertDialog = (props) => {
           </DialogContentText>
         </DialogContent>
         <DialogActions>
-          <Button onClick={props.addItemToCart} color="primary">
+          <Button onClick={handleCart} color="primary">
             ADICIONAR AO CARRINHO
           </Button>
         </DialogActions>
