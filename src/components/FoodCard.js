@@ -34,7 +34,7 @@ const Title = styled.p`
 const Description = styled.p`
   /* width: 120px; */
   /* height: 60px; */
-  margin: 8px 16px 8px;
+  /* margin: 8px 16px 8px; */
   font-family: Roboto;
   font-size: 12px;
   letter-spacing: -0.29px;
@@ -134,6 +134,7 @@ const FoodCard = (props) => {
   return (
 
     <FoodContainer>
+
       <Img src={props.image} />
       <div>
         <Title>{props.name}</Title>
