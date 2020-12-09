@@ -13,6 +13,7 @@ import {
   DivFormPayment
 } from "./styled";
 import { Radio, RadioGroup, FormControlLabel } from "@material-ui/core";
+import {NavBottom} from "../../components/NavBottom/NavBottom"
 
 const CartPage = () => {
   return (
@@ -41,6 +42,7 @@ const CartPage = () => {
       <ButtonConfirm type="submit">
         Confirmar
       </ButtonConfirm>
+      <NavBottom changeColor={false}/>
     </CartContainer>
   );
 };

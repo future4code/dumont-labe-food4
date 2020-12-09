@@ -7,6 +7,7 @@ import { useHistory } from 'react-router-dom';
 import { goToEditProfile, goToAdress } from '../../router/coordinator';
 import { useRequestData } from '../../hooks/useRequestData'
 import { BASE_URL, axiosConfig } from '../../constants/urls'
+import { NavBottom } from "../../components/NavBottom/NavBottom"
 
 const ProfilePage = () => {
   const history = useHistory()
@@ -40,6 +41,7 @@ const ProfilePage = () => {
       </FlexBox>
       <OrdesHistoryCard/>
       <OrdesHistoryCard/>
+      <NavBottom changeColor={false}/>
     </div> :
     <FlexBox>
       <CircularProgress color="secondary"/>

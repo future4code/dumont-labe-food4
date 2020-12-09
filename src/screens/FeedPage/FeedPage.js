@@ -4,6 +4,7 @@ import RestaurantCard from '../../components/RestaurantCard'
 import { BASE_URL } from '../../constants/urls'
 import { useRequestData } from '../../hooks/useRequestData'
 import {FeedContainer,AllFeed } from './styles'
+import {NavBottom} from "../../components/NavBottom/NavBottom"
 
 const FeedPage = () => {
   const getRestaurants = useRequestData(`${BASE_URL}/restaurants`, undefined)
@@ -28,6 +29,7 @@ const FeedPage = () => {
               )
             })}
           {/* </RestaurantCardContainer> */}
+          <NavBottom changeColor={false}/>
         </FeedContainer>
     </AllFeed>
     
