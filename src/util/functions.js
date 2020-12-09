@@ -20,6 +20,18 @@ export const timestampToDateString = (timestamp) => {
     return { date, formatedTime }
 }
 
+export const timestampToString = (timestamp) => {
+    const months = [
+        "Janeiro", "Fevereiro", "Março", "Abril", "Maio", "Junho", "Julho", "Agosto", "Setembro", "Outubro", "Novembro", "Dezembro"
+    ]
+    const dateObj = new Date(timestamp)
+    const day = dateObj.getDate()
+    const month = dateObj.getMonth("pt-BR")
+    const year = dateObj.getFullYear()
+
+    return `${day} de ${months[month]} ${year}`
+}
+
 export const cpfMask = (value) => {
     return value
         .replace(/\D/g, '') // substitui qualquer caracter que nao seja numero por nada
