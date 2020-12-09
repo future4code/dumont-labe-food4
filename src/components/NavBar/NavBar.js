@@ -86,6 +86,16 @@ const NavBar = () => {
             </Title2>
             </NavBarContainer>
         </Route>
+        <Route exact path={'/search'}>
+          <NavBarContainer>
+            <IconButton edge="false" className={classes.menuButton} color="inherit" aria-label="menu">
+              <ArrowBackIosIcon onClick={() => goBack(history)} />
+            </IconButton>
+            <Title>
+              Buscar
+            </Title>
+          </NavBarContainer>
+        </Route>
         <Route>
           <NavBarContainer>
             <IconButton edge="false" className={classes.menuButton} color="inherit" aria-label="menu">

@@ -6,7 +6,11 @@ export const Title = styled.p`
 `
 
 export const Title2 = styled.p`
-    height: 50.5px;
+        height: 50.5px;
+    display: flex;
+    text-align: center;
+    align-items: center;
+    justify-content: center;
     width: 100vw;
     margin: 0 auto;
 `

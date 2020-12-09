@@ -38,3 +38,7 @@ export const logout = (history) => {
 export const goBack = (history) => {
     history.goBack()
 }
+
+export const goToSearch = (history) => {
+    history.push('/search')
+}
