@@ -81,21 +81,7 @@ const RestaurantPage = () => {
             })}
           </div>)
         })}
-        {/* {getDetails && getDetails.restaurant.products.map((item)=>{
-              return(
-                <FoodCard
-                  key={item.id}
-                  removeItemFromCart={() => removeItemFromCart(item)}
-                  addItemToCart={() => addItemToCart(item)}
-                  category={item.category}
-                  description={item.description}
-                  id={item.id}
-                  name={item.name}
-                  image={item.photoUrl}
-                  price={item.price} 
-                />
-              )
-            })} */}
+        
 
       </RestaurantContainer>
     </RestaurantAll>
