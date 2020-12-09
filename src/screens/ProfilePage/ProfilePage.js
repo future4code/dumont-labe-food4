@@ -7,6 +7,7 @@ import { useHistory } from 'react-router-dom';
 import { goToEditProfile, goToAdress } from '../../router/coordinator';
 import { useRequestData } from '../../hooks/useRequestData'
 import { BASE_URL, axiosConfig } from '../../constants/urls'
+import NavBar from '../../components/NavBar/NavBar';
 
 const ProfilePage = () => {
   const history = useHistory()
@@ -15,6 +16,7 @@ const ProfilePage = () => {
   return (
     userData ?
     <div>
+      <NavBar />
       <FlexBox>
         <BaseContainer>
           <Typography variant="h6">{userData.user.name}</Typography>

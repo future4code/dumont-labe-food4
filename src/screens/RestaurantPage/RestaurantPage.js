@@ -13,8 +13,8 @@ const RestaurantPage = () => {
   console.log(getDetails)
   return (
     <RestaurantAll>
+        <NavBar/>
         <RestaurantContainer>
-            <NavBar/>
             {getDetails && <RestaurantCard
               name={getDetails.restaurant.name}
               category={getDetails.restaurant.category}
