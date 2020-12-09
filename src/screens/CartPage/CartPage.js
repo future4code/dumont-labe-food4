@@ -13,11 +13,12 @@ import {
   DivFormPayment
 } from "./styled";
 import { Radio, RadioGroup, FormControlLabel } from "@material-ui/core";
+import NavBar from "../../components/NavBar/NavBar";
 
 const CartPage = () => {
   return (
     <CartContainer>
-      <p>Meu carrinho</p>
+      <NavBar />
       <DivAdress>
         <DeliveryAddress>Endereço de entrega</DeliveryAddress>
         <Street>Rua Alessandra Veira, 42</Street>

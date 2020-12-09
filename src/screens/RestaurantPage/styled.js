@@ -12,6 +12,8 @@ export const RestaurantContainer=styled.div`
 
 export const RestaurantAll=styled.div`
   display:flex;
+  flex-direction: column;
+  align-items: center;
   justify-content:center;
   /* border-bottom:10px; */
 `  

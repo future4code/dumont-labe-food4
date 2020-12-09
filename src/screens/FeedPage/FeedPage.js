@@ -11,10 +11,8 @@ const FeedPage = () => {
 
   return (
     <AllFeed> 
+        <NavBar />
         <FeedContainer>
-      
-          <NavBar />
-          <p>Filtro</p>
           {/* <RestaurantCardContainer> */}
             {getRestaurants && getRestaurants.restaurants.map((restaurant) => {
               return (
