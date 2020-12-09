@@ -6,13 +6,16 @@ const LoadingContainer=styled.div`
   display:flex;
   flex-direction:column;
   align-items:center;
+  justify-content:center;
   width: 360px;
   height: 640px;
-  padding: 288px 117px 287px;
+  
+  
   background-color: #000000;
   img{
-    height:300px;
-    width: 300px;
+    width: 126px;
+    height: 65px;
+    object-fit: contain;
   }
 `
 

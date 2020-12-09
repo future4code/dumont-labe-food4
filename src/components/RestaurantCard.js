@@ -13,7 +13,7 @@ import styled from 'styled-components'
 
 const useStyles = makeStyles({
   root: {
-    maxWidth: 345,
+    maxWidth: 360,
   },
   media: {
     height: 140,
@@ -21,19 +21,18 @@ const useStyles = makeStyles({
 });
 
 const CardContainer = styled(Card)`
-  width: 360px;
-  height: 200px;
-  margin-top: 8px;
-  padding: 0 16px 0 16px;
-  border-radius: 8px;
-  border: solid 1px #b8b8b8;
+  margin-top: 10px;
+  
 `
 
-const Image = styled(CardMedia)`
-  width: 360px;
-  height: 120px;
+// const Image = styled(CardMedia)`
+//   width: 360px;
+//   height: 120px;
+// `
+const PriceAndTime = styled.div`
+  display:flex;
+  justify-content:space-between;
 `
-
 export default function RestaurantCard(props) {
   const classes = useStyles();
   const history =useHistory()
@@ -50,18 +49,23 @@ export default function RestaurantCard(props) {
           </Typography>
           
           <Typography variant="body2" color="textSecondary" component="p">
-            
+            {props.category}
           </Typography>
+
+
+          <PriceAndTime>
           <Typography variant="body2" color="textSecondary" component="p">
             {props.deliveryTime} minutos
           </Typography>
 
           <Typography variant="body2" color="textSecondary" component="p">
-            Frete R${props.shipping}
+            Frete R$ {props.shipping}
           </Typography>
+          </PriceAndTime>
+          
 
           <Typography variant="body2" color="textSecondary" component="p">
-           
+           {props.address}
           </Typography>
         </CardContent>
       </CardActionArea>

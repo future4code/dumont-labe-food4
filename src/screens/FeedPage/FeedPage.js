@@ -3,32 +3,34 @@ import NavBar from '../../components/NavBar/NavBar'
 import RestaurantCard from '../../components/RestaurantCard'
 import { BASE_URL } from '../../constants/urls'
 import { useRequestData } from '../../hooks/useRequestData'
-import { RestaurantCardContainer, FeedContainer } from './styles'
+import {FeedContainer,AllFeed } from './styles'
 
 const FeedPage = () => {
   const getRestaurants = useRequestData(`${BASE_URL}/restaurants`, undefined)
   console.log(getRestaurants)
 
   return (
+    <AllFeed> 
+        <FeedContainer>
+      
+          <NavBar />
+          <p>Filtro</p>
+          {/* <RestaurantCardContainer> */}
+            {getRestaurants && getRestaurants.restaurants.map((restaurant) => {
+              return (
+                <RestaurantCard
+                  id = {restaurant.id}
+                  deliveryTime = {restaurant.deliveryTime}
+                  shipping = {restaurant.shipping}
+                  name = {restaurant.name}
+                  image = {restaurant.logoUrl}
+              />
+              )
+            })}
+          {/* </RestaurantCardContainer> */}
+        </FeedContainer>
+    </AllFeed>
     
-    <FeedContainer>
-        <NavBar />
-        <p>Filtro</p>
-        <RestaurantCardContainer>
-          {getRestaurants && getRestaurants.restaurants.map((restaurant) => {
-            return (
-              <RestaurantCard
-                id = {restaurant.id}
-                address = {restaurant.address}
-                deliveryTime = {restaurant.deliveryTime}
-                shipping = {restaurant.shipping}
-                name = {restaurant.name}
-                image = {restaurant.logoUrl}
-             />
-            )
-          })}
-        </RestaurantCardContainer>
-    </FeedContainer>
   )
 }
 
