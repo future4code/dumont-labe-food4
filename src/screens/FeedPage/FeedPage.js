@@ -8,8 +8,10 @@ import {FeedContainer,AllFeed } from './styles'
 import SearchIcon from '@material-ui/icons/Search';
 import {goToSearch} from '../../router/coordinator'
 import { useHistory } from 'react-router-dom'
+import { useProtectedPage } from '../../hooks/useProtectedPage'
 
 const FeedPage = () => {
+  useProtectedPage()
   const getRestaurants = useRequestData(`${BASE_URL}/restaurants`, undefined)
   const history = useHistory()
 
@@ -17,16 +19,16 @@ const FeedPage = () => {
     <AllFeed> 
         <NavBar />
         <div>
-        <FormControl variant="outlined">
-        <OutlinedInput
-          onClick={() => goToSearch(history)}
-          startAdornment={
-            <InputAdornment position="start">
-              <SearchIcon />
-            </InputAdornment>
-          }
-        />
-      </FormControl>
+          <FormControl variant="outlined">
+            <OutlinedInput
+              onClick={() => goToSearch(history)}
+              startAdornment={
+                <InputAdornment position="start">
+                  <SearchIcon />
+                </InputAdornment>
+              }
+            />
+          </FormControl>
         </div>
         <FeedContainer>
           {/* <RestaurantCardContainer> */}
