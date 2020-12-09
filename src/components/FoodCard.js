@@ -1,7 +1,9 @@
-import React from 'react'
+import React, { useContext, useState } from 'react'
 import styled from 'styled-components'
+import GlobalStateContext from '../global/GlobalStateContext'
+import AlertDialog from './AlertDialog'
 
-const FoodContainer=styled.div`
+const FoodContainer = styled.div`
     display:flex;
     width: 360px;
     max-width:360px;
@@ -9,18 +11,18 @@ const FoodContainer=styled.div`
     border-radius: 8px;
     border: solid 1px #A9A9A9;
     margin-top:10px;
-`   
+`
 
-const Img=styled.img`
+const Img = styled.img`
     width: 90px;
     height: 112px;
     margin-right:10px;
     border-radius: 8px 0px 0px 8px;
     margin: 0 16px 0 0;
     /* object-fit: contain; */
-` 
+`
 
-const Title=styled.p`
+const Title = styled.p`
   width: 157px;
   /* height: 18px; */
   margin: 10px 0px 0 1px;
@@ -28,8 +30,8 @@ const Title=styled.p`
   font-size: 16px;
   letter-spacing: -0.39px;
   color: #5cb646;
-` 
-const Description=styled.p`
+`
+const Description = styled.p`
   /* width: 120px; */
   /* height: 60px; */
   margin: 8px 16px 8px;
@@ -37,8 +39,8 @@ const Description=styled.p`
   font-size: 12px;
   letter-spacing: -0.29px;
   color: var(--greyish);
-` 
-const Price=styled.h3`
+`
+const Price = styled.h3`
   width: 118px;
   /* height: 19px; */
   margin: 0px 0px 0px 0px;
@@ -46,8 +48,8 @@ const Price=styled.h3`
   font-size: 16px;
   letter-spacing: -0.39px;
   color: #000000;
-` 
-const ButtonContainer=styled.div`
+`
+const ButtonContainer = styled.div`
   display:flex;
   flex-direction:column;
   align-items:flex-end;
@@ -58,17 +60,17 @@ const ButtonContainer=styled.div`
   
   
 `
-const ButtonAdd=styled.div`
+const ButtonAdd = styled.div`
   width: 70px;
   height: 25px;
-  /* margin: 0 0 0 70px; */
+  margin: 75px 0 0 0;
   padding: 5px 8px 5px 12px;
   border-radius: 8px 0 8px 0;
   border: solid 1px #5cb646;
   color:#5cb646;
   
 `
-const ButtonRemove=styled.div`
+const ButtonRemove = styled.div`
   width: 70px;
   height: 25px;
   /* margin: 0 0 0 45px; */
@@ -78,7 +80,7 @@ const ButtonRemove=styled.div`
   color:#e02020;
   
 `
-const Count=styled.div`
+const Count = styled.div`
   width: 15px;
   height: 25px;
   /* margin: 0x 0 0 0px; */
@@ -95,43 +97,44 @@ const Count=styled.div`
 //   padding: 0 16px;
 
 const FoodCard = (props) => {
+  const {cart, option} = useContext(GlobalStateContext)
 
-    const changeButton=(counts)=>{
-        if(counts>0){
-            return(
-                <ButtonContainer>
-                    <Count> 2 </Count> 
-                    <ButtonRemove> Remover </ButtonRemove>  
-                </ButtonContainer>
+  const changeButton = () => {
+    const index = cart.findIndex((i) => i.id === props.id)
+    if (index === -1) {
+      return (
+        <ButtonContainer>
+          <ButtonAdd onClick={props.handleClickOpen}> Adicionar </ButtonAdd>
+        </ButtonContainer>
+      )
+      
+    } else {
+      return (
+        <ButtonContainer>
+          <Count>{option}</Count>
+          <ButtonRemove onClick={props.removeItemFromCart}> Remover </ButtonRemove>
+        </ButtonContainer>
 
-            )
-            
-        }else{
-            return(
-                <ButtonContainer>
-                    <ButtonAdd> Adicionar </ButtonAdd>  
-                 </ButtonContainer>
-            )
-            
-        }
+      )
+      
     }
-
+  }
 
   return (
-        
-            <FoodContainer>
-                <Img src={props.image}/>
-                <div>
-                    <Title>{props.name}</Title>
-                    <Description>{props.description}</Description>
-                    <Price>R$ {props.price}</Price>
-                </div>
-                {changeButton(1)}
-                
-            </FoodContainer>
-        
-    
-    
+
+    <FoodContainer>
+      <Img src={props.image} />
+      <div>
+        <Title>{props.name}</Title>
+        <Description>{props.description}</Description>
+        <Price>R$ {props.price}</Price>
+      </div>
+      {changeButton()}
+      <AlertDialog addItemToCart={props.addItemToCart} open={props.open} />
+    </FoodContainer>
+
+
+
   );
 }
 
