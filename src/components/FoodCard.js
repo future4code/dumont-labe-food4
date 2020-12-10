@@ -15,6 +15,7 @@ const FoodContainer = styled.div`
 
 const Img = styled.img`
     width: 90px;
+    /* width: 112px; */
     height: 112px;
     margin-right:10px;
     border-radius: 8px 0px 0px 8px;

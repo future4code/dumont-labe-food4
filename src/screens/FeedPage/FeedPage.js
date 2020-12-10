@@ -1,10 +1,10 @@
 import { FormControl, InputAdornment, OutlinedInput } from '@material-ui/core'
-import React from 'react'
+import React, {useState} from 'react'
 import NavBar from '../../components/NavBar/NavBar'
 import RestaurantCard from '../../components/RestaurantCard'
 import { BASE_URL } from '../../constants/urls'
 import { useRequestData } from '../../hooks/useRequestData'
-import {FeedContainer,AllFeed } from './styles'
+import {FeedContainer,AllFeed,Carousel,CarouselContainer } from './styles'
 import {NavBottom} from "../../components/NavBottom/NavBottom"
 import SearchIcon from '@material-ui/icons/Search';
 import {goToSearch} from '../../router/coordinator'
@@ -16,7 +16,22 @@ const FeedPage = () => {
   useProtectedPage()
   const getRestaurants = useRequestData(`${BASE_URL}/restaurants`, undefined)
   const history = useHistory()
+  const category=[]
+  const [choice, setChoice]=useState(false)
 
+  getRestaurants &&
+  getRestaurants.restaurants.map((item) => {
+      return category.push(item.category);
+    });
+
+  const filterCategorys = category.filter((el, i, arr) => arr.indexOf(el) === i);
+
+ const goToCategory=()=>{
+  setChoice(true)
+ }
+ console.log(choice)
+
+ 
   return (
     <AllFeed> 
         <NavBar />
@@ -32,6 +47,14 @@ const FeedPage = () => {
             />
           </FormControl>
         </div>
+            <CarouselContainer> {filterCategorys.map((restaurantCategory)=>{
+              return(
+                <Carousel onClick={goToCategory}> {restaurantCategory} </Carousel>
+              )
+
+            })}</CarouselContainer>
+
+            
         <FeedContainer>
             {getRestaurants && getRestaurants.restaurants.map((restaurant) => {
               return (
@@ -41,6 +64,7 @@ const FeedPage = () => {
                   shipping={restaurant.shipping}
                   name={restaurant.name}
                   image={restaurant.logoUrl}
+                  
               />
               )
             })}
