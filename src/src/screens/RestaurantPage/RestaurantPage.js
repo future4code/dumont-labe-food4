@@ -1,4 +1,4 @@
-import React, { useContext, useState } from "react";
+import React, { useContext } from "react";
 import FoodCard from "../../components/FoodCard";
 import RestaurantCard from "../../components/RestaurantCard";
 import { RestaurantAll, RestaurantContainer } from "./styled";
@@ -11,12 +11,11 @@ import OptionContext from "../../context/OptionContext";
 import RestaurantContext from "../../context/RestaurantContext";
 
 const RestaurantPage = () => {
-  const { cart, setCart, subtotal, updateTotal } = useContext(GlobalStateContext)
+  const { cart, setCart } = useContext(GlobalStateContext)
   const {setRestaurant} = useContext(RestaurantContext)
   const { option, setOption } = useContext(OptionContext);
   const category = [];
 
-  console.log(subtotal)
   const { id } = useParams();
   const getDetails = useRequestData(`${BASE_URL}/restaurants/${id}`, undefined);
 
@@ -27,9 +26,7 @@ const RestaurantPage = () => {
     setRestaurant(getDetails.restaurant)
     setCart(newCart);
     alert(`${newItem.name} foi adicionado ao seu carrinho!`)
-    setOption(1)
-    updateTotal(newItem.price, option, true)
-
+    setOption("")
   };
 
   const removeItemFromCart = (itemToRemove) => {
@@ -41,8 +38,6 @@ const RestaurantPage = () => {
       newCart[index].amount -= 1;
     }
     setCart(newCart)
-    updateTotal(itemToRemove.price, 1 , false)
-
   };
 
   getDetails &&
