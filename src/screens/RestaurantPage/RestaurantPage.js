@@ -84,6 +84,7 @@ const RestaurantPage = () => {
           );
         })}
       </RestaurantContainer>
+
     </RestaurantAll>
   );
 };

@@ -1,6 +1,6 @@
 import React from 'react'
-import { Typography, IconButton, CircularProgress } from '@material-ui/core'
-import { BaseContainer, FlexBox, Divisor } from './profile-styles'
+import { Typography, IconButton } from '@material-ui/core'
+import { BaseContainer, FlexBox, Divisor, ProgressStyled } from './profile-styles'
 import OrdesHistoryCard from '../../components/OrdersHistoryCard/OrdersHistoryCard'
 import EditIcon from '@material-ui/icons/Edit';
 import { useHistory } from 'react-router-dom';
@@ -8,14 +8,18 @@ import { goToEditProfile, goToAdress } from '../../router/coordinator';
 import { useRequestData } from '../../hooks/useRequestData'
 import { BASE_URL, axiosConfig } from '../../constants/urls'
 import { NavBottom } from "../../components/NavBottom/NavBottom"
+import { BASE_URL } from '../../constants/urls'
+import NavBar from '../../components/NavBar/NavBar';
 
 const ProfilePage = () => {
   const history = useHistory()
   const userData = useRequestData(`${BASE_URL}/profile`, undefined) 
+  const ordersHistory = useRequestData(`${BASE_URL}/orders/history`, undefined)
 
   return (
     userData ?
     <div>
+      <NavBar />
       <FlexBox>
         <BaseContainer>
           <Typography variant="h6">{userData.user.name}</Typography>
@@ -39,13 +43,23 @@ const ProfilePage = () => {
         <Typography variant="h6">Histórico de pedidos</Typography>
         <Divisor/>
       </FlexBox>
-      <OrdesHistoryCard/>
-      <OrdesHistoryCard/>
-      <NavBottom changeColor={false}/>
+      {ordersHistory && ordersHistory.orders.map((order, id) => {
+        console.log(order)
+        return (
+          <OrdesHistoryCard
+            key={id}
+            restaurantName={order.restaurantName}
+            date={order.createdAt}
+            price={order.totalPrice}
+          />
+        ) 
+      })}
+
     </div> :
-    <FlexBox>
-      <CircularProgress color="secondary"/>
-    </FlexBox>
+    <div>
+      <NavBar />
+      <ProgressStyled color="secondary"/>     
+    </div>
   )
 }
 

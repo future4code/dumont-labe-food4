@@ -1,3 +1,4 @@
+import { CircularProgress } from '@material-ui/core'
 import styled from 'styled-components'
 
 export const FlexBox = styled.div`
@@ -22,4 +23,10 @@ export const BaseContainer = styled.div`
 export const Divisor = styled.hr`
     width: 100%;
     color: #000;
+`
+
+export const ProgressStyled = styled(CircularProgress)`
+    position: fixed;
+    top: 50vh;
+    left: 50vw;
 `

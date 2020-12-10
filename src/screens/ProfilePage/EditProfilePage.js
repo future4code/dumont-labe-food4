@@ -2,14 +2,14 @@ import { Button, TextField } from '@material-ui/core';
 import React from 'react'
 import { FlexForm } from '../SignUpPage/styles';
 import { useForm } from '../../hooks/useForm'
+import NavBar from '../../components/NavBar/NavBar';
 
 const EditProfilePage = () => {
     const {form, onChange} = useForm({ name:'', email: '', cpf: '' })
     
     return (
             <FlexForm>
-                <p>Voltar</p>
-                <p>Editar</p>
+                <NavBar />
                 <TextField
                     name={'name'}
                     type={'text'}

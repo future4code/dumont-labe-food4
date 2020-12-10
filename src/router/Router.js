@@ -10,6 +10,7 @@ import CartPage from '../screens/CartPage/CartPage'
 import ProfilePage from '../screens/ProfilePage/ProfilePage'
 import EditProfilePage from '../screens/ProfilePage/EditProfilePage'
 import LoadingPage from '../screens/LoadingPage/LoadingPage'
+import SearchScreen from '../screens/SearchScreen/SearchScreen'
 
 const Router = () => {
     return (
@@ -41,6 +42,9 @@ const Router = () => {
                 </Route>
                 <Route exact path={'/loadingpage'} >
                     <LoadingPage />
+                </Route>
+                <Route exact path={'/search'}>
+                    <SearchScreen />
                 </Route>
                 <Route>
                     <ErrorPage />
