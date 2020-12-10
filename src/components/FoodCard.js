@@ -34,7 +34,7 @@ const Title = styled.p`
 const Description = styled.p`
   /* width: 120px; */
   /* height: 60px; */
-  margin: 8px 16px 8px;
+  /* margin: 8px 16px 8px; */
   font-family: Roboto;
   font-size: 12px;
   letter-spacing: -0.29px;
@@ -90,11 +90,6 @@ const Count = styled.div`
   color:#5cb646;
   
 `
-// const OutContainer=styled.div`
-//    width: 360px;
-//   height: 120px;
-//   margin: 8px 0 0;
-//   padding: 0 16px;
 
 const FoodCard = (props) => {
   const {cart} = useContext(GlobalStateContext)

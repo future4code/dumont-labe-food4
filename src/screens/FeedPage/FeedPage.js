@@ -5,10 +5,12 @@ import RestaurantCard from '../../components/RestaurantCard'
 import { BASE_URL } from '../../constants/urls'
 import { useRequestData } from '../../hooks/useRequestData'
 import {FeedContainer,AllFeed } from './styles'
+import {NavBottom} from "../../components/NavBottom/NavBottom"
 import SearchIcon from '@material-ui/icons/Search';
 import {goToSearch} from '../../router/coordinator'
 import { useHistory } from 'react-router-dom'
 import { useProtectedPage } from '../../hooks/useProtectedPage'
+
 
 const FeedPage = () => {
   useProtectedPage()
@@ -44,6 +46,7 @@ const FeedPage = () => {
               )
             })}
           {/* </RestaurantCardContainer> */}
+          <NavBottom changeColor={false}/>
         </FeedContainer>
     </AllFeed>
     
