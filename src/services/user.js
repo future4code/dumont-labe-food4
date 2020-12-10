@@ -39,3 +39,17 @@ export const addAdress = (body, history) => {
         window.alert("Algo deu errado, confira suas informações")
       })
 }
+
+export const editProfile = (body) => {
+      axios
+        .put(`${BASE_URL}/profile`, body, axiosConfig)
+        .then(response => {
+
+          console.log(response.data)
+          window.alert("Cadastro atualizado com sucesso!")
+        })
+        .catch(error => {
+          console.log(error.message)
+          window.alert("Algo deu errado, tente novamente!")
+        })
+}

@@ -6,7 +6,7 @@ export const Title = styled.p`
 `
 
 export const Title2 = styled.p`
-        height: 50.5px;
+    height: 50.5px;
     display: flex;
     text-align: center;
     align-items: center;
@@ -23,4 +23,5 @@ export const NavBarContainer = styled.div`
     align-items: center;
     margin: 0px;
     padding: 0px;
+    margin-bottom: 24px;
 `
