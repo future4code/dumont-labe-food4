@@ -10,9 +10,10 @@ export const FeedContainer = styled.div`
   
     width: 360px;
     height: 640;
-   
     margin-left: 8px;
-    
+    padding-bottom: 2em;
+    /* padding: 0 16px; */
+
 `
 
 export const CarouselContainer = styled.div`

@@ -19,7 +19,7 @@ export const DivAdress = styled.div`
 `;
 
 export const DivFormPayment = styled.div`
-margin: 0 16px;
+/* margin: 0 16px; */
 `;
 
 export const Text = styled.p`
