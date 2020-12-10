@@ -33,19 +33,18 @@ const FeedPage = () => {
           </FormControl>
         </div>
         <FeedContainer>
-          {/* <RestaurantCardContainer> */}
             {getRestaurants && getRestaurants.restaurants.map((restaurant) => {
               return (
-                <RestaurantCard
-                  id = {restaurant.id}
-                  deliveryTime = {restaurant.deliveryTime}
-                  shipping = {restaurant.shipping}
-                  name = {restaurant.name}
-                  image = {restaurant.logoUrl}
+                <RestaurantCard key={restaurant.id}
+                  id={restaurant.id}
+                  deliveryTime={restaurant.deliveryTime}
+                  shipping={restaurant.shipping}
+                  name={restaurant.name}
+                  image={restaurant.logoUrl}
               />
               )
             })}
-          {/* </RestaurantCardContainer> */}
+      
           <NavBottom changeColor={false}/>
         </FeedContainer>
     </AllFeed>

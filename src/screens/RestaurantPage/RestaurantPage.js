@@ -42,7 +42,7 @@ const RestaurantPage = () => {
       return category.push(item.category);
     });
 
-  const filterCategorys = category.filter((el, i, arr) => arr.indexOf(el) == i);
+  const filterCategorys = category.filter((el, i, arr) => arr.indexOf(el) === i);
 
   return (
     <RestaurantAll>
@@ -60,7 +60,7 @@ const RestaurantPage = () => {
         )}
         {filterCategorys.map((categoryName) => {
           return (
-            <div>
+            <div key={categoryName}>
               <h4>{categoryName}</h4>
               <hr />
               {getDetails.restaurant.products.map((item) => {

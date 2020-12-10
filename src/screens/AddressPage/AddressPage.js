@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import { FormContainer, Input, Title, ButtonSave } from "./styled";
 import { useForm } from "../../hooks/useForm"
 import { useHistory } from 'react-router-dom'

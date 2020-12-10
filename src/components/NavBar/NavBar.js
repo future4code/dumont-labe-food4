@@ -25,8 +25,8 @@ const NavBar = () => {
       <Switch>
         <Route exact path={`/restaurant/:id`}>
           <NavBarContainer>
-            <IconButton edge="false" className={classes.menuButton} color="inherit" aria-label="menu">
-              <ArrowBackIosIcon onClick={() => goBack(history)} />
+            <IconButton onClick={() => goBack(history)} className={classes.menuButton} color="inherit" aria-label="menu">
+              <ArrowBackIosIcon />
             </IconButton>
             <Title>
               Restaurante
@@ -35,8 +35,8 @@ const NavBar = () => {
         </Route>
         <Route exact path={'/editprofile'}>
           <NavBarContainer>
-            <IconButton edge="false" className={classes.menuButton} color="inherit" aria-label="menu">
-              <ArrowBackIosIcon onClick={() => goBack(history)} />
+            <IconButton onClick={() => goBack(history)} className={classes.menuButton} color="inherit" aria-label="menu">
+              <ArrowBackIosIcon />
             </IconButton>
             <Title>
               Editar
@@ -45,8 +45,8 @@ const NavBar = () => {
         </Route>
         <Route exact path={'/address'}>
           <NavBarContainer>
-            <IconButton edge="false" className={classes.menuButton} color="inherit" aria-label="menu">
-              <ArrowBackIosIcon onClick={() => goBack(history)} />
+            <IconButton onClick={() => goBack(history)} className={classes.menuButton} color="inherit" aria-label="menu">
+              <ArrowBackIosIcon />
             </IconButton>
             <Title>
               Endereço
@@ -55,14 +55,14 @@ const NavBar = () => {
         </Route>
         <Route exact path={['/address', '/signup']}>
           <NavBarContainer>
-            <IconButton edge="false" className={classes.menuButton} color="inherit" aria-label="menu">
-              <ArrowBackIosIcon onClick={() => goBack(history)} />
+            <IconButton onClick={() => goBack(history)} className={classes.menuButton} color="inherit" aria-label="menu">
+              <ArrowBackIosIcon />
             </IconButton>
           </NavBarContainer>
         </Route>
         <Route exact path={['/', '/home']}>
           <NavBarContainer>
-            <IconButton edge="false" className={classes.menuButton} color="inherit" aria-label="menu"/>
+            <IconButton className={classes.menuButton} color="inherit" aria-label="menu"/>
             <Title2>
               FutureEats
             </Title2>
@@ -70,7 +70,7 @@ const NavBar = () => {
         </Route>
         <Route exact path={'/cart'}>
           <NavBarContainer>
-            <IconButton edge="false" className={classes.menuButton} color="inherit" aria-label="menu"/>
+            <IconButton className={classes.menuButton} color="inherit" aria-label="menu"/>
             <Title2>
               Meu carrinho
             </Title2>
@@ -78,9 +78,6 @@ const NavBar = () => {
         </Route>
         <Route exact path={'/profile'}>
           <NavBarContainer>
-            <IconButton edge="false" className={classes.menuButton} color="inherit" aria-label="menu">
-              
-            </IconButton>
             <Title2>
               Meu Perfil
             </Title2>
@@ -88,8 +85,8 @@ const NavBar = () => {
         </Route>
         <Route exact path={'/search'}>
           <NavBarContainer>
-            <IconButton edge="false" className={classes.menuButton} color="inherit" aria-label="menu">
-              <ArrowBackIosIcon onClick={() => goBack(history)} />
+            <IconButton onClick={() => goBack(history)} className={classes.menuButton} color="inherit" aria-label="menu">
+              <ArrowBackIosIcon  />
             </IconButton>
             <Title>
               Buscar
@@ -98,8 +95,8 @@ const NavBar = () => {
         </Route>
         <Route>
           <NavBarContainer>
-            <IconButton edge="false" className={classes.menuButton} color="inherit" aria-label="menu">
-              <ArrowBackIosIcon onClick={() => goBack(history)} />
+            <IconButton onClick={() => goBack(history)} className={classes.menuButton} color="inherit" aria-label="menu">
+              <ArrowBackIosIcon  />
             </IconButton>
             <Title>
               FutureEats
