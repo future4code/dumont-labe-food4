@@ -31,26 +31,8 @@ const FeedPage = () => {
     setChoice(true)
     setNewCategory(category)
   }
-  
 
 
-
-
-
-
-  getRestaurants &&
-  getRestaurants.restaurants.map((item) => {
-      return category.push(item.category);
-    });
-
-  const filterCategorys = category.filter((el, i, arr) => arr.indexOf(el) === i);
-
- const goToCategory=()=>{
-  setChoice(true)
- }
- console.log(choice)
-
- 
   return (
     <AllFeed>
       <NavBar />
@@ -110,8 +92,9 @@ const FeedPage = () => {
         })
         )
       }
-        <NavBottom changeColorHome={true} />
-      </FeedContainer
+       
+      </FeedContainer>
+      <NavBottom changeColorHome={true} />
     </AllFeed>
 
   )
