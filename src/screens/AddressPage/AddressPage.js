@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { FormContainer, Input, Title, ButtonSave } from "./styled";
 import { useForm } from "../../hooks/useForm"
 import { useHistory } from 'react-router-dom'
@@ -12,7 +12,7 @@ const AddressPage = () => {
   useProtectedPage()
   const history = useHistory()
 
-  const { form, onChange, reset } = useForm({ street: "", number: "", neighbourhood: "", city: "", state: "", complement: ""})
+  const { form, onChange, reset, setValues } = useForm({ street: "", number: "", neighbourhood: "", city: "", state: "", complement: ""})
 
   const getAllAddress = useRequestData(`${BASE_URL}/profile/address`,undefined)
 
@@ -21,18 +21,19 @@ const AddressPage = () => {
     e.preventDefault()
     reset()
     addAdress(form, history)
+
   }
 
-
-
- 
+  useEffect(() =>{
+    getAllAddress && setValues(getAllAddress.address)
+    console.log(getAllAddress)
+  }, [getAllAddress])
 
   return (
     <div>
       <NavBar />
       <FormContainer onSubmit={handleSubmission}>
         <Title>Meu endereço</Title>
-        {/* <p>{getAllAddress? getAllAddress.address.street:null}</p> */}
         <Input
           required
           id="outlined-required"
@@ -43,7 +44,6 @@ const AddressPage = () => {
           name="street"
           value={form.street}
           onChange={onChange}
-          defaultValue= {getAllAddress? getAllAddress.address.street:null}
         />
         <Input
           required
