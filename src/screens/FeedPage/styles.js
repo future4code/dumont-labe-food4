@@ -5,21 +5,28 @@ export const AllFeed = styled.div`
     flex-direction: column;
     align-items:center;
 `
-// export const RestaurantCardContainer = styled.div`
-//     width: 360px;
-//     /* height: 196px; */
-//     margin: 20px;
-// `
+
 export const FeedContainer = styled.div`
-    /* display: flex;
-    flex-direction: column;
-    align-items:center; */
+  
     width: 360px;
     height: 640;
-    /* align-items: center;
-    justify-content: center; */
     margin-left: 8px;
     padding-bottom: 2em;
     /* padding: 0 16px; */
+
 `
 
+export const CarouselContainer = styled.div`
+    display: flex;
+    height: 100%;
+    width: 100%;
+    overflow:scroll;
+    ::-webkit-scrollbar {
+    width: 0px; 
+    background: transparent; 
+}
+`
+export const Carousel = styled.h4`
+    padding: 0px 18px;
+    :hover{cursor:pointer}
+`
