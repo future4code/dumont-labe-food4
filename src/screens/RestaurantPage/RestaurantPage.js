@@ -15,8 +15,6 @@ const RestaurantPage = () => {
   const {setRestaurant} = useContext(RestaurantContext)
   const { option, setOption } = useContext(OptionContext);
   const category = [];
-
-  console.log(subtotal)
   const { id } = useParams();
   const getDetails = useRequestData(`${BASE_URL}/restaurants/${id}`, undefined);
 
