@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React, { useContext, useState } from "react";
 import {
   CartContainer,
   DivAdress,
@@ -20,12 +20,13 @@ import FoodCard from "../../components/FoodCard";
 import RestaurantContext from "../../context/RestaurantContext";
 import { useRequestData } from "../../hooks/useRequestData";
 import { BASE_URL } from "../../constants/urls";
-
+import { placeOrder } from "../../services/restaurant";
 
 const CartPage = () => {
   const { cart, setCart, subtotal, updateTotal } = useContext(GlobalStateContext)
   const {restaurant} = useContext(RestaurantContext)
   const getAddress = useRequestData(`${BASE_URL}/profile/address`, undefined)
+  const [paymentMethod, setPaymentMethod] = useState("money")
 
   const removeItemFromCart = (itemToRemove) => {
     const index = cart.findIndex((item) => item.id === itemToRemove.id);
@@ -36,12 +37,25 @@ const CartPage = () => {
       newCart[index].amount -= 1;
     }
     setCart(newCart);
-
-  console.log(cart)
-
     updateTotal(itemToRemove.price, 1, false)
   };
 
+  const handlePaymentMethod = (event) => {
+    setPaymentMethod(event.target.value)
+  }
+
+  const setOrder = () => {
+    const products = cart.map((product) => {
+      return {id: product.id, quantity: product.amount}
+    })
+
+    const body = {
+      products: products,
+      paymentMethod: paymentMethod
+    }
+
+    placeOrder(restaurant.id, body)
+  }
 
   return (
     <CartContainer>
@@ -80,12 +94,12 @@ const CartPage = () => {
       <DivFormPayment>
         <p>Forma de Pagamento</p>
         <hr />
-        <RadioGroup>
+        <RadioGroup onChange={handlePaymentMethod} value={paymentMethod}>
           <FormControlLabel value="money" control={<Radio />} label="Dinheiro" />
-          <FormControlLabel value="creditCard" control={<Radio />} label="Cartão de Crédito" />
+          <FormControlLabel value="creditcard" control={<Radio />} label="Cartão de Crédito" />
         </RadioGroup>
       </DivFormPayment>
-      <ButtonConfirm type="submit">
+      <ButtonConfirm onClick={setOrder}>
         Confirmar
       </ButtonConfirm>
       <NavBottom changeColorCart={true} />
