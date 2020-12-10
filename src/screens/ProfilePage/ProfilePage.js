@@ -53,12 +53,12 @@ const ProfilePage = () => {
           />
         ) 
       })}
-    <NavBottom />
+    <NavBottom changeColorAvatar={true}/>
     </div> :
     <div>
       <NavBar />
       <ProgressStyled color="secondary"/>
-      <NavBottom />     
+      <NavBottom changeColorAvatar={true}/>     
     </div>
   )
 }

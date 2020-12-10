@@ -45,7 +45,7 @@ const FeedPage = () => {
               )
             })}
       
-          <NavBottom changeColor={false}/>
+          <NavBottom changeColorHome={true}/>
         </FeedContainer>
     </AllFeed>
     

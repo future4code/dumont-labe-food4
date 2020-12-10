@@ -1,13 +1,15 @@
 import React from "react";
 import { makeStyles } from "@material-ui/core/styles";
-import BottomNavigation from "@material-ui/core/BottomNavigation";
 import BottomNavigationAction from "@material-ui/core/BottomNavigationAction";
 import grayAvatar from "../../assets/grey-avatar.svg";
 import grayCart from "../../assets/grey-cart.svg";
 import grayHome from "../../assets/grey-home.svg";
 import greenAvatar from "../../assets/green-avatar.svg";
+import greenCart from "../../assets/green-cart.svg";
+import greenHome from "../../assets/green-home.svg";
 import { goToFeed, goToCart, goToProfile } from "../../router/coordinator";
 import { useHistory } from "react-router-dom";
+import {BottomNav} from "./styled";
 
 const useStyles = makeStyles({
   root: {
@@ -21,7 +23,7 @@ export function NavBottom(props) {
   const [value, setValue] = React.useState(0);
 
   return (
-    <BottomNavigation
+    <BottomNav
       value={value}
       onChange={(event, newValue) => {
         setValue(newValue);
@@ -30,17 +32,17 @@ export function NavBottom(props) {
       className={classes.root}
     >
       <BottomNavigationAction
-        icon={<img src={grayHome} alt="home" />}
+        icon={props.changeColorHome ? <img src={greenHome} alt="avatar" /> : <img src={grayHome} alt="avatar" />}
         onClick={() => goToFeed(history)}
       />
       <BottomNavigationAction
-        icon={<img src={grayCart} alt="carrinho" />}
+        icon={props.changeColorCart ? <img src={greenCart} alt="avatar" /> : <img src={grayCart} alt="avatar" />}
         onClick={() => goToCart(history)}
       />
       <BottomNavigationAction
-        icon={props.changeColor ? <img src={greenAvatar} alt="avatar" /> : <img src={grayAvatar} alt="avatar" />}
+        icon={props.changeColorAvatar ? <img src={greenAvatar} alt="avatar" /> : <img src={grayAvatar} alt="avatar" />}
         onClick={() => goToProfile(history)}
       />
-    </BottomNavigation>
+    </BottomNav>
   );
 }

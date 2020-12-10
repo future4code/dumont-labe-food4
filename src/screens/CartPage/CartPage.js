@@ -44,7 +44,7 @@ const CartPage = () => {
       <ButtonConfirm type="submit">
         Confirmar
       </ButtonConfirm>
-      <NavBottom changeColor={false}/>
+      <NavBottom changeColorCart={true}/>
     </CartContainer>
   );
 };
