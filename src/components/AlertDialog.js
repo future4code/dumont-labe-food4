@@ -17,7 +17,6 @@ const AlertDialog = (props) => {
     setOption(e.target.value)
   }
 
-
   const handleCart = () => {
     props.addItemToCart()
     props.handleClose()

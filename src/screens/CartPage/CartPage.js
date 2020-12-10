@@ -23,10 +23,9 @@ import { BASE_URL } from "../../constants/urls";
 
 
 const CartPage = () => {
-  const { cart, setCart } = useContext(GlobalStateContext)
+  const { cart, setCart, subtotal, updateTotal } = useContext(GlobalStateContext)
   const {restaurant} = useContext(RestaurantContext)
   const getAddress = useRequestData(`${BASE_URL}/profile/address`, undefined)
-
 
   const removeItemFromCart = (itemToRemove) => {
     const index = cart.findIndex((item) => item.id === itemToRemove.id);
@@ -37,14 +36,13 @@ const CartPage = () => {
       newCart[index].amount -= 1;
     }
     setCart(newCart);
-  };
-
-  const subtotal = () => {
-    // talvez com um forEach salvar o preço e a quantidade? 
-    // não sei
-  }
 
   console.log(cart)
+
+    updateTotal(itemToRemove.price, 1, false)
+  };
+
+
   return (
     <CartContainer>
       <NavBar />
@@ -73,10 +71,11 @@ const CartPage = () => {
         })}
         </div>}
       </div>
-      <Freight>Frete R${restaurant.shipping},00</Freight>
+
+      <Freight>Frete R${subtotal!==0 ? `${restaurant.shipping}.00` : "00.00"}</Freight>
       <DivTotal>
         <Subtotal>SUBTOTAL</Subtotal>
-        <Price>R$00.00</Price>
+        <Price>R${subtotal!==0 ? (subtotal + restaurant.shipping) : "00.00"}</Price>
       </DivTotal>
       <DivFormPayment>
         <p>Forma de Pagamento</p>

@@ -5,7 +5,7 @@ import GlobalState from './global/GlobalState';
 import Router from './router/Router'
 
 const App = () => {
-  const [option, setOption] = useState("")
+  const [option, setOption] = useState(1)
   const [restaurant, setRestaurant] = useState({})
 
   const data = { option, setOption }

@@ -4,8 +4,8 @@ import NavBar from '../../components/NavBar/NavBar'
 import RestaurantCard from '../../components/RestaurantCard'
 import { BASE_URL } from '../../constants/urls'
 import { useRequestData } from '../../hooks/useRequestData'
-import { FeedContainer, AllFeed, Carousel, CarouselContainer } from './styles'
-import { NavBottom } from "../../components/NavBottom/NavBottom"
+import {FeedContainer,AllFeed,Carousel,CarouselContainer } from './styles'
+import {NavBottom} from "../../components/NavBottom/NavBottom"
 import SearchIcon from '@material-ui/icons/Search';
 import { goToSearch } from '../../router/coordinator'
 import { useHistory } from 'react-router-dom'
@@ -37,6 +37,20 @@ const FeedPage = () => {
 
 
 
+
+  getRestaurants &&
+  getRestaurants.restaurants.map((item) => {
+      return category.push(item.category);
+    });
+
+  const filterCategorys = category.filter((el, i, arr) => arr.indexOf(el) === i);
+
+ const goToCategory=()=>{
+  setChoice(true)
+ }
+ console.log(choice)
+
+ 
   return (
     <AllFeed>
       <NavBar />
@@ -91,12 +105,13 @@ const FeedPage = () => {
               name={restaurant.name}
               image={restaurant.logoUrl}
             />
+
           )
         })
         )
       }
         <NavBottom changeColorHome={true} />
-      </FeedContainer>
+      </FeedContainer
     </AllFeed>
 
   )
