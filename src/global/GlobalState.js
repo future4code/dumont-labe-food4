@@ -7,11 +7,8 @@ const GlobalState = (props) => {
 
   const updateTotal = (itemPrice, itemAmount, isAdding) => {
     let total=subtotal
-
     isAdding ? total+= itemPrice*itemAmount : total-= itemPrice*itemAmount
-
     setSubtotal(total)
-    console.log(subtotal)
   }
 
   const data = {cart, setCart, subtotal, setSubtotal, updateTotal}
