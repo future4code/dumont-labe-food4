@@ -16,7 +16,6 @@ const AddressPage = () => {
 
   const getAllAddress = useRequestData(`${BASE_URL}/profile/address`,undefined)
 
-  console.log(getAllAddress)
   const handleSubmission = (e) => {
     e.preventDefault()
     reset()
@@ -26,14 +25,12 @@ const AddressPage = () => {
 
   useEffect(() =>{
     getAllAddress && setValues(getAllAddress.address)
-    console.log(getAllAddress)
   }, [getAllAddress])
 
   return (
     <div>
       <NavBar />
       <FormContainer onSubmit={handleSubmission}>
-        <Title>Meu endereço</Title>
         <Input
           required
           id="outlined-required"
