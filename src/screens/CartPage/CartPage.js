@@ -21,12 +21,14 @@ import RestaurantContext from "../../context/RestaurantContext";
 import { useRequestData } from "../../hooks/useRequestData";
 import { BASE_URL } from "../../constants/urls";
 import { placeOrder } from "../../services/restaurant";
+import { useHistory } from "react-router-dom";
 
 const CartPage = () => {
   const { cart, setCart, subtotal, updateTotal } = useContext(GlobalStateContext)
   const {restaurant} = useContext(RestaurantContext)
   const getAddress = useRequestData(`${BASE_URL}/profile/address`, undefined)
   const [paymentMethod, setPaymentMethod] = useState("money")
+  const history = useHistory()
 
   const removeItemFromCart = (itemToRemove) => {
     const index = cart.findIndex((item) => item.id === itemToRemove.id);
@@ -54,7 +56,7 @@ const CartPage = () => {
       paymentMethod: paymentMethod
     }
 
-    placeOrder(restaurant.id, body)
+    placeOrder(restaurant.id, body, history)
   }
 
   return (

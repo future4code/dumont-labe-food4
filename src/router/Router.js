@@ -16,6 +16,9 @@ const Router = () => {
     return (
         <BrowserRouter>
             <Switch>
+                <Route exact path={'/'} >
+                    <LoadingPage />
+                </Route>
                 <Route exact path={'/login'}>
                     <LoginPage />
                 </Route>
@@ -39,9 +42,6 @@ const Router = () => {
                 </Route>
                 <Route exact path={'/editprofile'} >
                     <EditProfilePage />
-                </Route>
-                <Route exact path={'/'} >
-                    <LoadingPage />
                 </Route>
                 <Route exact path={'/search'}>
                     <SearchScreen />
