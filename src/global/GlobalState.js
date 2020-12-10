@@ -3,8 +3,18 @@ import GlobalStateContext from "./GlobalStateContext"
 
 const GlobalState = (props) => {
   const [cart, setCart] = useState([])
+  const [subtotal, setSubtotal] = useState(0)
 
-  const data = {cart, setCart}
+  const updateTotal = (itemPrice, itemAmount, isAdding) => {
+    let total=subtotal
+
+    isAdding ? total+= itemPrice*itemAmount : total-= itemPrice*itemAmount
+
+    setSubtotal(total)
+    console.log(subtotal)
+  }
+
+  const data = {cart, setCart, subtotal, setSubtotal, updateTotal}
 
   return (
     <GlobalStateContext.Provider value={data}>
