@@ -2,7 +2,7 @@ import React, { useEffect } from 'react'
 import styled from 'styled-components'
 import logo from '../../assets/white-logo.svg'
 import {useHistory} from 'react-router-dom'
-import {goToLogin} from '../../router/coordinator'
+import {goToLogin, goToFeed} from '../../router/coordinator'
   
 const LoadingContainer=styled.div`
   display:flex;
@@ -28,14 +28,14 @@ const AllLoadingContainer=styled.div`
 
 const LoadingPage = () => {
   const history = useHistory()
+  const token = window.localStorage.getItem("token")
 
   useEffect(()=>{
     setTimeout(redirection, 3000)
   },[])
 
   const redirection = () => {
-    goToLogin(history)
-
+    if(token) { goToFeed(history) } else { goToLogin(history) }
   }
 
 

@@ -6,6 +6,7 @@ import { useRequestData } from "../../hooks/useRequestData";
 import { BASE_URL } from "../../constants/urls";
 import { useParams } from "react-router-dom";
 import NavBar from "../../components/NavBar/NavBar";
+import {NavBottom} from "../../components/NavBottom/NavBottom"
 import GlobalStateContext from "../../global/GlobalStateContext";
 import OptionContext from "../../context/OptionContext";
 import RestaurantContext from "../../context/RestaurantContext";
@@ -90,7 +91,7 @@ const RestaurantPage = () => {
           );
         })}
       </RestaurantContainer>
-
+      <NavBottom/>
     </RestaurantAll>
   );
 };
