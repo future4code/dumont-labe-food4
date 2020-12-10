@@ -44,7 +44,7 @@ export default function RestaurantCard(props) {
           image= {props.image}
         />
         <CardContent>
-          <Typography gutterBottom variant="p" component="h3" color="primary"> 
+          <Typography gutterBottom variant="body1" component="h3" color="primary"> 
            {props.name}
           </Typography>
           

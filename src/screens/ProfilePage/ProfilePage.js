@@ -6,10 +6,9 @@ import EditIcon from '@material-ui/icons/Edit';
 import { useHistory } from 'react-router-dom';
 import { goToEditProfile, goToAdress } from '../../router/coordinator';
 import { useRequestData } from '../../hooks/useRequestData'
-import { BASE_URL, axiosConfig } from '../../constants/urls'
-import { NavBottom } from "../../components/NavBottom/NavBottom"
 import { BASE_URL } from '../../constants/urls'
-import NavBar from '../../components/NavBar/NavBar';
+import { NavBottom } from "../../components/NavBottom/NavBottom"
+import NavBar from '../../components/NavBar/NavBar'
 
 const ProfilePage = () => {
   const history = useHistory()
@@ -54,11 +53,12 @@ const ProfilePage = () => {
           />
         ) 
       })}
-
+    <NavBottom />
     </div> :
     <div>
       <NavBar />
-      <ProgressStyled color="secondary"/>     
+      <ProgressStyled color="secondary"/>
+      <NavBottom />     
     </div>
   )
 }

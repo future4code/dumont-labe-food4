@@ -6,11 +6,8 @@ import grayAvatar from "../../assets/grey-avatar.svg";
 import grayCart from "../../assets/grey-cart.svg";
 import grayHome from "../../assets/grey-home.svg";
 import greenAvatar from "../../assets/green-avatar.svg";
-import greenCart from "../../assets/green-cart.svg";
-import greenHome from "../../assets/green-home.svg";
 import { goToFeed, goToCart, goToProfile } from "../../router/coordinator";
 import { useHistory } from "react-router-dom";
-import { Switch } from "@material-ui/core";
 
 const useStyles = makeStyles({
   root: {
@@ -33,15 +30,15 @@ export function NavBottom(props) {
       className={classes.root}
     >
       <BottomNavigationAction
-        icon={<img src={grayHome} />}
+        icon={<img src={grayHome} alt="home" />}
         onClick={() => goToFeed(history)}
       />
       <BottomNavigationAction
-        icon={<img src={grayCart} />}
+        icon={<img src={grayCart} alt="carrinho" />}
         onClick={() => goToCart(history)}
       />
       <BottomNavigationAction
-        icon={props.changeColor ? <img src={greenAvatar} /> : <img src={grayAvatar} />}
+        icon={props.changeColor ? <img src={greenAvatar} alt="avatar" /> : <img src={grayAvatar} alt="avatar" />}
         onClick={() => goToProfile(history)}
       />
     </BottomNavigation>

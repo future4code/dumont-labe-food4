@@ -1,6 +1,4 @@
 import styled from "styled-components";
-import {TextField, Button} from "@material-ui/core";
-
 
 export const CartContainer = styled.div`
   height: 640px;
