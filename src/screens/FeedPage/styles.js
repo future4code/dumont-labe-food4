@@ -19,6 +19,7 @@ export const FeedContainer = styled.div`
     /* align-items: center;
     justify-content: center; */
     margin-left: 8px;
+    padding-bottom: 2em;
     /* padding: 0 16px; */
 `
 

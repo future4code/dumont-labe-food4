@@ -8,10 +8,12 @@ import { useParams } from "react-router-dom";
 import NavBar from "../../components/NavBar/NavBar";
 import GlobalStateContext from "../../global/GlobalStateContext";
 import OptionContext from "../../context/OptionContext";
+import RestaurantContext from "../../context/RestaurantContext";
 
 const RestaurantPage = () => {
-  const { cart, setCart } = useContext(GlobalStateContext);
-  const { option } = useContext(OptionContext);
+  const { cart, setCart } = useContext(GlobalStateContext)
+  const {setRestaurant} = useContext(RestaurantContext)
+  const { option, setOption } = useContext(OptionContext);
   const category = [];
 
   const { id } = useParams();
@@ -21,9 +23,10 @@ const RestaurantPage = () => {
     let newCart = [...cart];
 
     newCart.push({ ...newItem, amount: option });
-
+    setRestaurant(getDetails.restaurant)
     setCart(newCart);
-    alert(`${newItem.name} foi adicionado ao seu carrinho!`);
+    alert(`${newItem.name} foi adicionado ao seu carrinho!`)
+    setOption("")
   };
 
   const removeItemFromCart = (itemToRemove) => {
@@ -34,7 +37,7 @@ const RestaurantPage = () => {
     } else {
       newCart[index].amount -= 1;
     }
-    setCart(newCart);
+    setCart(newCart)
   };
 
   getDetails &&
