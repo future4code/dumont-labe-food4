@@ -48,7 +48,7 @@ const AlertDialog = (props) => {
         </DialogTitle>
         <DialogContent>
           <DialogContentText id="alert-dialog-description">
-            <FormControl variant="outlined">
+            <FormControl fullWidth variant="outlined">
               <InputLabel htmlFor="outlined-age-native-simple">
                 Quantidade
               </InputLabel>
