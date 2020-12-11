@@ -94,6 +94,9 @@ const CartPage = () => {
       </DivCart>
 
       <Freight>Frete R${subtotal!==0 ? `${restaurant.shipping}.00` : "00.00"}</Freight>
+      <ButtonContinue onClick={() => goBack(history)}>
+        Continuar comprando
+      </ButtonContinue>
       <DivTotal>
         <Subtotal>SUBTOTAL</Subtotal>
         <Price>R${subtotal!==0 ? (subtotal + restaurant.shipping) : "00.00"}</Price>
@@ -109,9 +112,6 @@ const CartPage = () => {
       <ButtonConfirm onClick={setOrder}>
         Confirmar
       </ButtonConfirm>
-      <ButtonContinue onClick={() => goBack(history)}>
-        Continuar comprando
-      </ButtonContinue>
       <NavBottom changeColorCart={true}/>
     </CartContainer>
   );

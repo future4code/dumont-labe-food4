@@ -71,7 +71,7 @@ export const ButtonConfirm = styled.button`
   border-radius: 3px;
   border: none;
   background-color: #5cb646;
-  margin: 0 auto;
+  margin: 4.5em auto;
 `
 export const ButtonContinue = styled.button`
   display: block;
@@ -82,7 +82,7 @@ export const ButtonContinue = styled.button`
   border-radius: 3px;
   border: none;
   background-color: #5cb646;
-  margin: 4.5em auto;
+  margin: 0 auto;
 `
 export const DivCart = styled.div`
     margin: 0 20px;
