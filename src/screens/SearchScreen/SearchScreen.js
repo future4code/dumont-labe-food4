@@ -1,7 +1,8 @@
-import { FormControl, InputAdornment, OutlinedInput } from '@material-ui/core';
+import { FormControl, InputAdornment } from '@material-ui/core';
 import React, { useState } from 'react'
 import NavBar from '../../components/NavBar/NavBar'
 import SearchIcon from '@material-ui/icons/Search'
+import { AllFeed, SearchContainer, StyledOutlinedInput, FeedContainer } from '../FeedPage/styles'
 import { BASE_URL } from '../../constants/urls'
 import RestaurantCard from '../../components/RestaurantCard';
 import axios from 'axios'
@@ -30,11 +31,11 @@ const SearchScreen = () => {
     restaurant.name.toLowerCase().includes(search.toLowerCase())))
 
   return (
-    <div>
+    <AllFeed>
       <NavBar />
-      <div>
+      <SearchContainer>
         <FormControl variant="outlined">
-          <OutlinedInput
+          <StyledOutlinedInput
             value={search}
             onChange={handleSearch}
             startAdornment={
@@ -44,8 +45,9 @@ const SearchScreen = () => {
             }
           />
         </FormControl>
-      </div>
-      {restaurants.length === 0 ? <div>Busque por um restaurante</div> : (filteredRestaurants.length === 0 ? <div>Não achei o restaurante</div> : filteredRestaurants.map((restaurant) => {
+      </SearchContainer>
+      <FeedContainer searchScreen>
+      {restaurants.length === 0 ? <SearchContainer>Busque por um restaurante</SearchContainer> : (filteredRestaurants.length === 0 ? <SearchContainer>Não achei o restaurante</SearchContainer> : filteredRestaurants.map((restaurant) => {
         return (
           <RestaurantCard
             id={restaurant.id}
@@ -56,8 +58,8 @@ const SearchScreen = () => {
           />
         )
       }))}
-
-    </div>
+      </FeedContainer>
+    </AllFeed>
   )
 }
 
