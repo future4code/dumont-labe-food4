@@ -6,6 +6,7 @@ import {
   Freight,
   DivTotal,
   DivCart,
+  DivOrder,
   Street,
   DeliveryAddress,
   Subtotal,
@@ -75,7 +76,8 @@ const CartPage = () => {
         <h2>{restaurant.address}</h2>
         <h3>{restaurant.deliveryTime} min</h3>
         {cart.map((item) => {
-          return <FoodCard
+          return <DivOrder>
+          <FoodCard
           key={item.id}
           removeItemFromCart={() => removeItemFromCart(item)}
           category={item.category}
@@ -84,7 +86,8 @@ const CartPage = () => {
           name={item.name}
           image={item.photoUrl}
           price={item.price}
-        />
+          />
+        </DivOrder>
         })}
         </div>}
       </DivCart>

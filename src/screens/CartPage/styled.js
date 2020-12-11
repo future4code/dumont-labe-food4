@@ -76,3 +76,7 @@ export const ButtonConfirm = styled.button`
 export const DivCart = styled.div`
     margin: 0 20px;
 `
+
+export const DivOrder = styled.div`
+    margin-left: 5px;
+`
