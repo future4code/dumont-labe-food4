@@ -53,8 +53,9 @@ const RestaurantPage = () => {
 
   return (
     <RestaurantAll>
+      <NavBar />
       <RestaurantContainer>
-        <NavBar />
+        
         {getDetails && (
           <RestaurantCard
             name={getDetails.restaurant.name}

@@ -1,5 +1,4 @@
 import React from "react";
-import { makeStyles } from "@material-ui/core/styles";
 import BottomNavigationAction from "@material-ui/core/BottomNavigationAction";
 import grayAvatar from "../../assets/grey-avatar.svg";
 import grayCart from "../../assets/grey-cart.svg";
@@ -11,15 +10,8 @@ import { goToFeed, goToCart, goToProfile } from "../../router/coordinator";
 import { useHistory } from "react-router-dom";
 import {BottomNav} from "./styled";
 
-const useStyles = makeStyles({
-  root: {
-    width: 360,
-  },
-});
-
-export function NavBottom(props) {
+export const NavBottom = (props) => {
   const history = useHistory();
-  const classes = useStyles();
   const [value, setValue] = React.useState(0);
 
   return (
@@ -29,7 +21,6 @@ export function NavBottom(props) {
         setValue(newValue);
       }}
       showLabels
-      className={classes.root}
     >
       <BottomNavigationAction
         icon={props.changeColorHome ? <img src={greenHome} alt="avatar" /> : <img src={grayHome} alt="avatar" />}

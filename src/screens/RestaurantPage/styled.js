@@ -1,13 +1,9 @@
 import styled from 'styled-components'
 
 export const RestaurantContainer=styled.div`
-  width: 360px;
-  
-  /* border:solid 1px; */
   display:flex;
   flex-direction:column;
-  /* align-items: center; */
-    /* padding: 20px 0 0 0; */
+  margin-bottom: 72px;
 `  
 
 export const RestaurantAll=styled.div`
@@ -15,5 +11,4 @@ export const RestaurantAll=styled.div`
   flex-direction: column;
   align-items: center;
   justify-content:center;
-  /* border-bottom:10px; */
 `  

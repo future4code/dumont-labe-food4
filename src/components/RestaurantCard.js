@@ -22,7 +22,7 @@ const useStyles = makeStyles({
 
 const CardContainer = styled(Card)`
   margin-top: 10px;
-  
+  margin: ${props => props.isFeedPage ? "16px" : "0px"};  
 `
 
 // const Image = styled(CardMedia)`
