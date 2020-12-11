@@ -5,6 +5,7 @@ import {
   Text,
   Freight,
   DivTotal,
+  DivCart,
   Street,
   DeliveryAddress,
   Subtotal,
@@ -66,7 +67,7 @@ const CartPage = () => {
         <DeliveryAddress>Endereço de entrega</DeliveryAddress>
         {getAddress &&  <Street>{getAddress.address.street} , {getAddress.address.number}</Street>}
       </DivAdress>
-      <div>
+      <DivCart>
         {cart.length === 0 ? <div>
           <Text>Carrinho Vazio</Text>
         </div> : <div>
@@ -86,7 +87,7 @@ const CartPage = () => {
         />
         })}
         </div>}
-      </div>
+      </DivCart>
 
       <Freight>Frete R${subtotal!==0 ? `${restaurant.shipping}.00` : "00.00"}</Freight>
       <DivTotal>
