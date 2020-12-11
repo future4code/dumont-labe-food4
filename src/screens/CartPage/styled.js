@@ -4,6 +4,7 @@ export const CartContainer = styled.div`
   height: 100%;
   width: 100%;
   margin-bottom: 20px;
+  font-family: 'Roboto', sans-serif;
 `;
 
 export const DivTotal = styled.div`
@@ -71,7 +72,7 @@ export const ButtonConfirm = styled.button`
   border-radius: 3px;
   border: none;
   background-color: #5cb646;
-  margin: 0 auto;
+  margin: 6.5em auto 4.5em auto;
 `
 export const ButtonContinue = styled.button`
   display: block;
