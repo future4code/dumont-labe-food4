@@ -1,5 +1,5 @@
 import { FormControl, InputAdornment, OutlinedInput } from '@material-ui/core'
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import NavBar from '../../components/NavBar/NavBar'
 import RestaurantCard from '../../components/RestaurantCard'
 import { BASE_URL } from '../../constants/urls'
@@ -11,11 +11,13 @@ import { goToSearch } from '../../router/coordinator'
 import { useHistory } from 'react-router-dom'
 import { useProtectedPage } from '../../hooks/useProtectedPage'
 import SnackBar from '../../components/SnackBar/SnackBar'
+import axios from 'axios'
+import {axiosConfig} from '../../constants/urls'
 
 const FeedPage = () => {
   useProtectedPage()
   const getRestaurants = useRequestData(`${BASE_URL}/restaurants`, undefined)
-  const getActiveOrder = useRequestData(`${BASE_URL}/active-order`, null)
+  const [orderInfo, setOrderInfo] = useState({})
   const history = useHistory()
   const category = []
   const [choice, setChoice] = useState(false)
@@ -34,13 +36,26 @@ const FeedPage = () => {
     setNewCategory(category)
   }
 
-  const handleCloseSnackBar = (event, reason) => {
-    if (reason === 'clickaway') {
-      return;
-    }
+  useEffect(() => {
+    getActiveOrder()
+  }, [])
 
-    setOpen(false);
-  };
+  const getActiveOrder = () => {
+    axios.get(`${BASE_URL}/active-order`, axiosConfig)
+        .then((response) => {
+            console.log(response.data)
+
+            if(response.data.order === null) {
+              setOpen(false)
+            } else {
+              setOpen(true)
+              setOrderInfo(response.data.order)
+            }
+        })
+        .catch((erro) => {
+            console.log(erro);
+        });
+  }
   
   return (
     <AllFeed>
@@ -98,7 +113,7 @@ const FeedPage = () => {
       }
        
       </FeedContainer>
-      {getActiveOrder && <SnackBar open={open} onClose={handleCloseSnackBar}/>}
+      <SnackBar totalPrice={orderInfo.totalPrice} restaurant={orderInfo.restaurantName} open={open} />
       <NavBottom changeColorHome={true}/>
     </AllFeed>
   )
