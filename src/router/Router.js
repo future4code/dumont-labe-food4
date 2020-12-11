@@ -8,7 +8,7 @@ import FeedPage from '../screens/FeedPage/FeedPage'
 import RestaurantPage from '../screens/RestaurantPage/RestaurantPage'
 import CartPage from '../screens/CartPage/CartPage'
 import ProfilePage from '../screens/ProfilePage/ProfilePage'
-import EditProfilePage from '../screens/ProfilePage/EditProfilePage'
+import EditProfilePage from '../screens/EditProfilePage.js/EditProfilePage'
 import LoadingPage from '../screens/LoadingPage/LoadingPage'
 import SearchScreen from '../screens/SearchScreen/SearchScreen'
 

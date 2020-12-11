@@ -1,4 +1,4 @@
-import React, { useContext, useState } from "react";
+import React, { useContext } from "react";
 import FoodCard from "../../components/FoodCard";
 import RestaurantCard from "../../components/RestaurantCard";
 import { RestaurantAll, RestaurantContainer } from "./styled";
@@ -12,7 +12,7 @@ import OptionContext from "../../context/OptionContext";
 import RestaurantContext from "../../context/RestaurantContext";
 
 const RestaurantPage = () => {
-  const { cart, setCart, subtotal, updateTotal } = useContext(GlobalStateContext)
+  const { cart, setCart, updateTotal } = useContext(GlobalStateContext)
   const {setRestaurant} = useContext(RestaurantContext)
   const { option, setOption } = useContext(OptionContext);
   const category = [];

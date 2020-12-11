@@ -13,11 +13,12 @@ export const getRestaurants = () => {
         })
 }
 
-export const placeOrder = (restaurantId, body, history) => {
+export const placeOrder = (restaurantId, body, history, reset) => {
     axios
         .post(`${BASE_URL}/restaurants/${restaurantId}/order`, body, axiosConfig )
         .then(() => {
             window.alert("Seu pedido foi recebido pelo restaurante!")
+            reset()
             goToFeed(history)
         })
             .catch(error => {

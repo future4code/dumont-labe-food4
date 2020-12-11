@@ -45,6 +45,9 @@ const CartPage = () => {
     updateTotal(itemToRemove.price, 1, false)
   };
 
+  const resetCart = () => {
+    setCart([])
+  }
   const handlePaymentMethod = (event) => {
     setPaymentMethod(event.target.value)
   }
@@ -59,7 +62,7 @@ const CartPage = () => {
       paymentMethod: paymentMethod
     }
 
-    placeOrder(restaurant.id, body, history)
+    placeOrder(restaurant.id, body, history, resetCart)
   }
 
   return (

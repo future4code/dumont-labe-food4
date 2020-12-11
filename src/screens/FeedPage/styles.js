@@ -14,6 +14,7 @@ export const FeedContainer = styled.div`
   display:flex;
   gap: 16px;
   flex-direction:column;
+  padding-bottom: 3em;
   margin: ${props => props.searchScreen ? "16px 0" : "0 0 16px 0"};
 `
 
