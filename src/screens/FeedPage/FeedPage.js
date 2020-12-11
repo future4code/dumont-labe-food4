@@ -114,6 +114,7 @@ const FeedPage = () => {
        
       </FeedContainer>
       <SnackBar totalPrice={orderInfo.totalPrice} restaurant={orderInfo.restaurantName} open={open} />
+      
       <NavBottom changeColorHome={true}/>
     </AllFeed>
   )
