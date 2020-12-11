@@ -6,11 +6,15 @@ import { AllFeed, SearchContainer, StyledOutlinedInput, FeedContainer } from '..
 import { BASE_URL } from '../../constants/urls'
 import RestaurantCard from '../../components/RestaurantCard/RestaurantCard';
 import axios from 'axios'
-import { axiosConfig } from '../../constants/urls'
 
 const SearchScreen = () => {
   const [search, setSearch] = useState("")
   const [restaurants, setRestaurants] = useState([])
+
+  const axiosConfig = {
+    headers: { auth: window.localStorage.getItem("token") },
+  }; 
+  
 
   const getRestaurants = () => {
     axios.get(`${BASE_URL}/restaurants`, axiosConfig)

@@ -27,7 +27,7 @@ export const Logo = styled.img`
 
 export const Button = styled.button`
   display: block;
-  width: 350px;
+  width: 100%;
   height: 45px;
   font-size: 16px;
   padding: 12px 16px;

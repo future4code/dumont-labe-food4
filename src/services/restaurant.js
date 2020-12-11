@@ -1,7 +1,11 @@
 import axios from 'axios'
-import { BASE_URL, axiosConfig } from '../constants/urls'
+import { BASE_URL } from '../constants/urls'
 import { goToFeed} from "../router/coordinator"
 
+const axiosConfig = {
+    headers: { auth: window.localStorage.getItem("token") },
+}; 
+  
 export const getRestaurants = () => {
     axios
         .get(`${BASE_URL}/restaurants`)

@@ -12,7 +12,6 @@ import { useHistory } from 'react-router-dom'
 import { useProtectedPage } from '../../hooks/useProtectedPage'
 import SnackBar from '../../components/SnackBar'
 import axios from 'axios'
-import { axiosConfig } from '../../constants/urls'
 
 const FeedPage = () => {
   useProtectedPage()
@@ -23,6 +22,11 @@ const FeedPage = () => {
   const [choice, setChoice] = useState(false)
   const [newCategory, setNewCategory] = useState("")
   const [open, setOpen] = useState(true);
+
+  const axiosConfig = {
+    headers: { auth: window.localStorage.getItem("token") },
+  }; 
+  
 
   getRestaurants &&
     getRestaurants.restaurants.map((item) => {

@@ -33,7 +33,7 @@ export const ProgressStyled = styled(CircularProgress)`
 
 export const ButtonLogout = styled.button`
   display: block;
-  width: 380px;
+  width: 100%;
   height: 45px;
   font-size: 18px;
   padding: 12px 16px;
