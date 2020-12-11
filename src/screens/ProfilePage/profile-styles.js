@@ -50,6 +50,6 @@ export const ButtonBox = styled.div`
 `
 
 export const ProfilePageContainer = styled.div`
-    height: 100vh;
-    margin-bottom: 28px;
+    height: 100%;
+    margin-bottom: 76px;
 `

@@ -10,15 +10,17 @@ import SearchIcon from '@material-ui/icons/Search';
 import { goToSearch } from '../../router/coordinator'
 import { useHistory } from 'react-router-dom'
 import { useProtectedPage } from '../../hooks/useProtectedPage'
-
+import SnackBar from '../../components/SnackBar/SnackBar'
 
 const FeedPage = () => {
   useProtectedPage()
   const getRestaurants = useRequestData(`${BASE_URL}/restaurants`, undefined)
+  const getActiveOrder = useRequestData(`${BASE_URL}/active-order`, null)
   const history = useHistory()
   const category = []
   const [choice, setChoice] = useState(false)
   const [newCategory, setNewCategory]=useState("")
+  const [open, setOpen] = useState(true);
 
   getRestaurants &&
     getRestaurants.restaurants.map((item) => {
@@ -31,6 +33,14 @@ const FeedPage = () => {
     setChoice(true)
     setNewCategory(category)
   }
+
+  const handleCloseSnackBar = (event, reason) => {
+    if (reason === 'clickaway') {
+      return;
+    }
+
+    setOpen(false);
+  };
   
   return (
     <AllFeed>
@@ -53,31 +63,25 @@ const FeedPage = () => {
         return (
           <Carousel key={restaurantCategory} onClick={()=>goToCategory(restaurantCategory)}> {restaurantCategory} </Carousel>
         )
-
       })}</CarouselContainer>
-
 
       <FeedContainer>
        {choice? 
-           
-              (getRestaurants && getRestaurants.restaurants.map((restaurant) => {
-                if (newCategory === restaurant.category) {
-                  return (
-                    <RestaurantCard 
-                      isFeedPage
-                      key={restaurant.id}
-                      id={restaurant.id}
-                      deliveryTime={restaurant.deliveryTime}
-                      shipping = {restaurant.shipping}
-                      name={restaurant.name}
-                      image={restaurant.logoUrl}
-
-                    />
-                  )
-                }
-              }))
-           
-       
+          (getRestaurants && getRestaurants.restaurants.map((restaurant) => {
+            if (newCategory === restaurant.category) {
+              return (
+                <RestaurantCard 
+                  isFeedPage
+                  key={restaurant.id}
+                  id={restaurant.id}
+                  deliveryTime={restaurant.deliveryTime}
+                  shipping = {restaurant.shipping}
+                  name={restaurant.name}
+                  image={restaurant.logoUrl}
+                />
+              )
+            }
+          }))       
         :
         (getRestaurants && getRestaurants.restaurants.map((restaurant) => {
           return (
@@ -88,16 +92,15 @@ const FeedPage = () => {
               name={restaurant.name}
               image={restaurant.logoUrl}
             />
-
           )
         })
         )
       }
        
       </FeedContainer>
+      {getActiveOrder && <SnackBar open={open} onClose={handleCloseSnackBar}/>}
       <NavBottom changeColorHome={true}/>
     </AllFeed>
-
   )
 }
 
