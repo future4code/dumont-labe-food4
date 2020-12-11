@@ -9,6 +9,14 @@ import InputLabel from "@material-ui/core/InputLabel";
 import FormControl from "@material-ui/core/FormControl";
 import Select from "@material-ui/core/Select";
 import OptionContext from "../context/OptionContext";
+import { IconButton } from '@material-ui/core';
+import CloseIcon from '@material-ui/icons/Close';
+import styled from 'styled-components';
+
+const CloseButtonContainer = styled.div`
+  display: flex;
+  justify-content: flex-end;
+`
 
 const AlertDialog = (props) => {
   const {option, setOption} = useContext(OptionContext)
@@ -29,6 +37,12 @@ const AlertDialog = (props) => {
         aria-labelledby="alert-dialog-title"
         aria-describedby="alert-dialog-description"
       >
+        <CloseButtonContainer>
+          <IconButton edge="start" onClick={props.handleClose}>
+            <CloseIcon/>
+          </IconButton>
+        </CloseButtonContainer>
+        
         <DialogTitle id="alert-dialog-title">
           Selecione a quantidade desejada
         </DialogTitle>
