@@ -12,6 +12,7 @@ import {
   Subtotal,
   Price,
   ButtonConfirm,
+  ButtonContinue,
   DivFormPayment
 } from "./styled";
 import { Radio, RadioGroup, FormControlLabel } from "@material-ui/core";
@@ -24,7 +25,7 @@ import { useRequestData } from "../../hooks/useRequestData";
 import { BASE_URL } from "../../constants/urls";
 import { placeOrder } from "../../services/restaurant";
 import { useHistory } from "react-router-dom";
-
+import {goBack} from "../../router/coordinator"
 const CartPage = () => {
   const { cart, setCart, subtotal, updateTotal } = useContext(GlobalStateContext)
   const {restaurant} = useContext(RestaurantContext)
@@ -108,6 +109,9 @@ const CartPage = () => {
       <ButtonConfirm onClick={setOrder}>
         Confirmar
       </ButtonConfirm>
+      <ButtonContinue onClick={() => goBack(history)}>
+        Continuar comprando
+      </ButtonContinue>
       <NavBottom changeColorCart={true}/>
     </CartContainer>
   );

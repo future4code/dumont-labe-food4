@@ -74,6 +74,17 @@ export const ButtonConfirm = styled.button`
   background-color: #5cb646;
   margin: 6.5em auto 4.5em auto;
 `
+export const ButtonContinue = styled.button`
+  display: block;
+  width: 380px;
+  height: 45px;
+  font-size: 18px;
+  padding: 12px 16px;
+  border-radius: 3px;
+  border: none;
+  background-color: #5cb646;
+  margin: 4.5em auto;
+`
 export const DivCart = styled.div`
     margin: 0 20px;
 `

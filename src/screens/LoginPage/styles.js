@@ -17,6 +17,7 @@ export const FormContainer = styled.form`
     height: 28vh;
     justify-content: space-around;
     margin-bottom: 15px;
+    gap: 16px;
 `
 
 export const Logo = styled.img`

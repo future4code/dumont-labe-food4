@@ -1,10 +1,10 @@
-import { FormControl, InputAdornment, OutlinedInput } from '@material-ui/core'
+import { FormControl, InputAdornment } from '@material-ui/core'
 import React, { useEffect, useState } from 'react'
 import NavBar from '../../components/NavBar/NavBar'
 import RestaurantCard from '../../components/RestaurantCard'
 import { BASE_URL } from '../../constants/urls'
 import { useRequestData } from '../../hooks/useRequestData'
-import {FeedContainer,AllFeed,Carousel,CarouselContainer } from './styles'
+import {FeedContainer, AllFeed, StyledOutlinedInput, SearchContainer, Carousel, CarouselContainer } from './styles'
 import {NavBottom} from "../../components/NavBottom/NavBottom"
 import SearchIcon from '@material-ui/icons/Search';
 import { goToSearch } from '../../router/coordinator'
@@ -60,9 +60,9 @@ const FeedPage = () => {
   return (
     <AllFeed>
       <NavBar />
-      <div>
+      <SearchContainer>
         <FormControl variant="outlined">
-          <OutlinedInput
+          <StyledOutlinedInput
             onClick={() => goToSearch(history)}
             startAdornment={
               <InputAdornment position="start">
@@ -71,7 +71,8 @@ const FeedPage = () => {
             }
           />
         </FormControl>
-      </div>
+      </SearchContainer>
+      
       <CarouselContainer> 
         <Carousel onClick={()=>setChoice(false)}> Todas</Carousel>
          {filterCategorys.map((restaurantCategory) => {
@@ -86,7 +87,6 @@ const FeedPage = () => {
             if (newCategory === restaurant.category) {
               return (
                 <RestaurantCard 
-                  isFeedPage
                   key={restaurant.id}
                   id={restaurant.id}
                   deliveryTime={restaurant.deliveryTime}
@@ -114,6 +114,7 @@ const FeedPage = () => {
        
       </FeedContainer>
       <SnackBar totalPrice={orderInfo.totalPrice} restaurant={orderInfo.restaurantName} open={open} />
+      
       <NavBottom changeColorHome={true}/>
     </AllFeed>
   )
