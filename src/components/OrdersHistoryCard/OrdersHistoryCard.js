@@ -1,6 +1,5 @@
 import React from 'react'
-import { Typography, Box } from '@material-ui/core'
-import { RoundedBorderBox } from './styles'
+import { RoundedBorderBox, Subtotal, Text, TextDate, TextName } from './styles'
 import { timestampToString } from '../../util/functions'
 
 const OrdersHistoryCard = (props) => {
@@ -8,13 +7,13 @@ const OrdersHistoryCard = (props) => {
 
     return (
         <RoundedBorderBox>
-            <Typography color="primary" variant="h5">{props.restaurantName}</Typography>
-            <Typography variant="h6">{date}</Typography>
-            <Typography fontWeight="bold" variant="h5">
-                <Box fontWeight="fontWeightBold">
+            <TextName color="primary" variant="h5">{props.restaurantName}</TextName>
+            <TextDate variant="h6">{date}</TextDate>
+            <Text fontWeight="bold" variant="h5">
+                <Subtotal fontWeight="fontWeightBold">
                     {`SUBTOTAL: R$${props.price}`}
-                </Box>
-            </Typography>
+                </Subtotal>
+            </Text>
         </RoundedBorderBox>
     )
 }
