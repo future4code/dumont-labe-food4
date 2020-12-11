@@ -37,13 +37,13 @@ const SnackBar = (props) => {
   const classes = useStyles();
 
   return (
-      <Snackbar className={classes.root} open={props.open} autoHideDuration={6000}>
-        <Alert className={classes.alert} icon={<ScheduleIcon fontSize="large" />} severity="success">
-          <Typography className={classes.inProgress} variant="subtitle1">Pedido em andamento</Typography>
-          <Typography className={classes.details} variant="subtitle1">{props.restaurant}</Typography>
-          <Typography className={classes.details} variant="subtitle1"><strong>SUBTOTAL: R$ {props.totalPrice}</strong></Typography>
-        </Alert>
-      </Snackbar>
+    <Snackbar className={classes.root} open={props.open} autoHideDuration={6000}>
+      <Alert className={classes.alert} icon={<ScheduleIcon fontSize="large" />} severity="success">
+        <Typography className={classes.inProgress} variant="subtitle1">Pedido em andamento</Typography>
+        <Typography className={classes.details} variant="subtitle1">{props.restaurant}</Typography>
+        <Typography className={classes.details} variant="subtitle1"><strong>SUBTOTAL: R$ {props.totalPrice}</strong></Typography>
+      </Alert>
+    </Snackbar>
   );
 }
 

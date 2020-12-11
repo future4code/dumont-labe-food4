@@ -4,7 +4,7 @@ import NavBar from '../../components/NavBar/NavBar'
 import SearchIcon from '@material-ui/icons/Search'
 import { AllFeed, SearchContainer, StyledOutlinedInput, FeedContainer } from '../FeedPage/styles'
 import { BASE_URL } from '../../constants/urls'
-import RestaurantCard from '../../components/RestaurantCard';
+import RestaurantCard from '../../components/RestaurantCard/RestaurantCard';
 import axios from 'axios'
 import { axiosConfig } from '../../constants/urls'
 

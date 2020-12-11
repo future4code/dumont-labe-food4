@@ -8,7 +8,7 @@ import greenCart from "../../assets/green-cart.svg";
 import greenHome from "../../assets/green-home.svg";
 import { goToFeed, goToCart, goToProfile } from "../../router/coordinator";
 import { useHistory } from "react-router-dom";
-import {BottomNav} from "./styled";
+import { BottomNav } from "./styled";
 
 export const NavBottom = (props) => {
   const history = useHistory();

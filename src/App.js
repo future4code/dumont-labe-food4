@@ -1,25 +1,25 @@
 import React, { useState } from 'react'
-import OptionContext from './context/OptionContext';
+import QuantityContext from './context/QuantityContext';
 import RestaurantContext from './context/RestaurantContext';
 import GlobalState from './global/GlobalState';
 import Router from './router/Router'
 
 const App = () => {
-  const [option, setOption] = useState(1)
+  const [quantity, setQuantity] = useState(1)
   const [restaurant, setRestaurant] = useState({})
 
-  const data = { option, setOption }
+  const option = { quantity, setQuantity }
 
   const resInfo = { restaurant, setRestaurant }
   return (
     <div>
-      <OptionContext.Provider value={data}>
+      <QuantityContext.Provider value={option}>
         <RestaurantContext.Provider value={resInfo}>
           <GlobalState>
             <Router />
           </GlobalState>
         </RestaurantContext.Provider>
-      </OptionContext.Provider>
+      </QuantityContext.Provider>
     </div>
   )
 }

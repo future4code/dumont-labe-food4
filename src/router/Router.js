@@ -10,7 +10,7 @@ import CartPage from '../screens/CartPage/CartPage'
 import ProfilePage from '../screens/ProfilePage/ProfilePage'
 import EditProfilePage from '../screens/EditProfilePage.js/EditProfilePage'
 import LoadingPage from '../screens/LoadingPage/LoadingPage'
-import SearchScreen from '../screens/SearchScreen/SearchScreen'
+import SearchScreen from '../screens/SearchPage/SearchPage'
 
 const Router = () => {
     return (
