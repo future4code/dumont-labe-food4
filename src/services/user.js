@@ -19,6 +19,7 @@ export const login = (body, history) => {
       .then((res) => {
         localStorage.setItem("token", res.data.token)
         window.alert(`Olá ${res.data.user.name}! Estou te redirecionando para o feed`)
+        console.log(localStorage.getItem("token"))
         goToFeed(history)
       })
       .catch((error) => {

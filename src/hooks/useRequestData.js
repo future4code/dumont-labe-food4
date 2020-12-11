@@ -7,7 +7,10 @@ export const useRequestData = (url, initialState) => {
     
 
     useEffect(() => {
-        axios.get(url, axiosConfig)
+        axios.get(url, {
+            headers: { 
+                auth: window.localStorage.getItem("token") },
+    })
         .then((response) => {
             setData(response.data);
         })
