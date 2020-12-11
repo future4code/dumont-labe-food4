@@ -1,15 +1,17 @@
 import { Button, TextField } from '@material-ui/core';
-import React from 'react'
+import React, { useEffect } from 'react'
 import { FlexForm, LoginContainer } from './editprofile-styles';
 import { useForm } from '../../hooks/useForm'
 import NavBar from '../../components/NavBar/NavBar';
 import { useProtectedPage } from '../../hooks/useProtectedPage';
 import { editProfile } from '../../services/user';
-import { cpfMask } from '../../util/functions'
+import { cpfMask } from '../../util/functions';
+import {useRequestData} from '../../hooks/useRequestData';
+import { BASE_URL } from '../../constants/urls';
 
 const EditProfilePage = () => {
     useProtectedPage()
-    const { form, onChange, reset } = useForm({ name:'', email: '', cpf: '' })
+    const { form, onChange, reset, setValues } = useForm({ name:'', email: '', cpf: '' })
     const formatedCPF = cpfMask(form.cpf)
 
     const handleSubmit = (event) => {
@@ -17,6 +19,12 @@ const EditProfilePage = () => {
         editProfile(form)
         reset()
     }
+
+    const userData = useRequestData(`${BASE_URL}/profile`, undefined)
+
+    useEffect(() =>{
+        userData && setValues(userData.user)
+      }, [userData])
 
     return (
             <div>

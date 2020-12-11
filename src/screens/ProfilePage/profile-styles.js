@@ -8,7 +8,7 @@ export const FlexBox = styled.div`
     gap: 4px;
     flex-direction: column;
     align-items: flex-start;
-    background-color:${props => props.greyBackground ? "#EEEEEE" : "#FFF" }
+    background-color:${props => props.greyBackground ? "#EEEEEE" : "#FFF" };
 `
 
 export const BaseContainer = styled.div`
@@ -29,4 +29,27 @@ export const ProgressStyled = styled(CircularProgress)`
     position: fixed;
     top: 50vh;
     left: 50vw;
+`
+
+export const ButtonLogout = styled.button`
+  display: block;
+  width: 380px;
+  height: 45px;
+  font-size: 18px;
+  padding: 12px 16px;
+  border-radius: 3px;
+  border: none;
+  background-color: #5cb646;
+  margin: 15px auto;
+`
+
+export const ButtonBox = styled.div`
+    display: flex;
+    justify-content: center;
+    align-items: center;
+`
+
+export const ProfilePageContainer = styled.div`
+    height: 100vh;
+    margin-bottom: 28px;
 `
