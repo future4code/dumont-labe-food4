@@ -104,7 +104,7 @@ const CartPage = () => {
       <ButtonConfirm onClick={setOrder}>
         Confirmar
       </ButtonConfirm>
-      <NavBottom changeColorCart={true} />
+      <NavBottom changeColorCart={true}/>
     </CartContainer>
   );
 };

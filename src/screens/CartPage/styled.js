@@ -1,25 +1,27 @@
 import styled from "styled-components";
 
 export const CartContainer = styled.div`
-  height: 640px;
+  height: 100%;
+  width: 100%;
+  margin-bottom: 20px;
 `;
 
 export const DivTotal = styled.div`
   display: flex;
   justify-content: space-between;
-  margin: 0 16px;
+  margin: 0 20px;
   align-items: center;
+  margin: 20px;
 `;
 
 export const DivAdress = styled.div`
-  height: 76px;
-  margin: 1px 0 8px;
-  padding: 16px;
+  height: 25vw;
+  padding: 10px 0 0 17px;
   background-color: #eeeeee;
 `;
 
 export const DivFormPayment = styled.div`
-/* margin: 0 16px; */
+  margin: 0 20px;
 `;
 
 export const Text = styled.p`
@@ -31,7 +33,7 @@ export const Text = styled.p`
 export const Freight = styled.p`
   text-align: end;
   font-size: 18px;
-  margin: 33px 16px 14px 60px;
+  margin: 33px 20px 14px 60px;
 `;
 
 export const DeliveryAddress = styled.p`
@@ -61,12 +63,13 @@ export const Price = styled.p`
 `;
 
 export const ButtonConfirm = styled.button`
-  width: 360px;
+  display: block;
+  width: 380px;
   height: 45px;
   font-size: 18px;
   padding: 12px 16px;
   border-radius: 3px;
   border: none;
-  background-color: rgba(92, 182, 70, 0.5);
-  margin: 100px 30px 0 28px;
+  background-color: #5cb646;
+  margin: 4.5em auto;
 `

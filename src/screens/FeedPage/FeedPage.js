@@ -31,8 +31,7 @@ const FeedPage = () => {
     setChoice(true)
     setNewCategory(category)
   }
-
-
+  
   return (
     <AllFeed>
       <NavBar />
@@ -94,7 +93,7 @@ const FeedPage = () => {
       }
        
       </FeedContainer>
-      <NavBottom changeColorHome={true} />
+      <NavBottom changeColorHome={true}/>
     </AllFeed>
 
   )

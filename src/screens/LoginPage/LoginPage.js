@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
-import { TextField, Button, Typography, OutlinedInput, InputAdornment, IconButton, FormControl, InputLabel } from '@material-ui/core'
-import { LoginContainer, FormContainer, Logo } from "./styles"
+import { TextField, Typography, OutlinedInput, InputAdornment, IconButton, FormControl, InputLabel } from '@material-ui/core'
+import { LoginContainer, FormContainer, Logo, Button } from "./styles"
 import logo from '../../assets/black-logo.svg'
 import { useForm } from '../../hooks/useForm'
 import { Visibility, VisibilityOff } from '@material-ui/icons'
@@ -61,8 +61,8 @@ const LoginPage = () => {
             }
           />
         </FormControl>
-        <Button type="submit" color="primary" variant="contained">
-          LOGAR
+        <Button type="submit">
+          Entrar
         </Button>
       </FormContainer>
       <Typography onClick={() => goToSignUp(history)} align="center" variant="subtitle1">Não possui cadastro? Clique aqui</Typography>
