@@ -63,7 +63,9 @@ const FeedPage = () => {
               (getRestaurants && getRestaurants.restaurants.map((restaurant) => {
                 if (newCategory === restaurant.category) {
                   return (
-                    <RestaurantCard key={restaurant.id}
+                    <RestaurantCard 
+                      isFeedPage
+                      key={restaurant.id}
                       id={restaurant.id}
                       deliveryTime={restaurant.deliveryTime}
                       shipping = {restaurant.shipping}

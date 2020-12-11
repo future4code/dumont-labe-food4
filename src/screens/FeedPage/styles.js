@@ -1,18 +1,17 @@
 import styled from "styled-components";
 
 export const AllFeed = styled.div`
-  display: flex;
+  display:flex;
   flex-direction: column;
   align-items: center;
+  justify-content:center;
 `;
 
 export const FeedContainer = styled.div`
   width: 100%;
-  height: 100%;
-  margin-left: 8px;
-  padding-bottom: 2em;
-  margin-bottom: 28px;
-  /* padding: 0 16px; */
+  display:flex;
+  flex-direction:column;
+  margin-bottom: 72px;
 `;
 
 export const CarouselContainer = styled.div`
