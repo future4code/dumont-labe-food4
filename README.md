@@ -9,7 +9,7 @@
 - Nicole Zolnier
 
 ### Link do Surge:
-
+https://futureEats4-dumont.surge.sh/
 
 ### O que funciona:
 - rotas
@@ -44,5 +44,11 @@
 
 
 ### O que não funciona:
+- tudo funciona :)
 
+### Bibliotecas Usadas
+- axios
+- styled-components
+- Material-UI
+- react-router-dom
 
