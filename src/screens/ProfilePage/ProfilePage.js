@@ -1,14 +1,15 @@
 import React from 'react'
 import { Typography, IconButton } from '@material-ui/core'
-import { BaseContainer, FlexBox, Divisor, ProgressStyled } from './profile-styles'
+import { BaseContainer, FlexBox, Divisor, ProgressStyled, ButtonLogout, ButtonBox, ProfilePageContainer } from './profile-styles'
 import OrdesHistoryCard from '../../components/OrdersHistoryCard/OrdersHistoryCard'
 import EditIcon from '@material-ui/icons/Edit';
 import { useHistory } from 'react-router-dom';
-import { goToEditProfile, goToAdress } from '../../router/coordinator';
+import { goToEditProfile, goToAdress, logout } from '../../router/coordinator';
 import { useRequestData } from '../../hooks/useRequestData'
 import { BASE_URL } from '../../constants/urls'
 import { NavBottom } from "../../components/NavBottom/NavBottom"
 import NavBar from '../../components/NavBar/NavBar'
+import SettingsPowerIcon from '@material-ui/icons/SettingsPower';
 
 const ProfilePage = () => {
   const history = useHistory()
@@ -16,8 +17,9 @@ const ProfilePage = () => {
   const ordersHistory = useRequestData(`${BASE_URL}/orders/history`, undefined)
 
   return (
-    userData ?
     <div>
+       {userData ?
+    <ProfilePageContainer>
       <NavBar />
       <FlexBox>
         <BaseContainer>
@@ -53,12 +55,20 @@ const ProfilePage = () => {
           />
         ) 
       })}
+    <ButtonLogout onClick={() => logout(history)}>
+      <ButtonBox>
+        <SettingsPowerIcon />
+        Sair
+      </ButtonBox>
+    </ButtonLogout>
     <NavBottom changeColorAvatar={true}/>
-    </div> :
+    </ProfilePageContainer> :
     <div>
       <NavBar />
       <ProgressStyled color="secondary"/>
-      <NavBottom changeColorAvatar={true}/>     
+      <NavBottom changeColorAvatar={true}/>
+    </div>
+  }
     </div>
   )
 }
