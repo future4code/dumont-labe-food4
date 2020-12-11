@@ -2,7 +2,7 @@ import styled from 'styled-components';
 
 export const Title = styled.p`
     display: block;
-    margin: auto;
+    margin: 0 auto;
 `
 
 export const Title2 = styled.p`
@@ -23,5 +23,4 @@ export const NavBarContainer = styled.div`
     align-items: center;
     margin: 0px;
     padding: 0px;
-    margin-bottom: 24px;
 `

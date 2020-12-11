@@ -4,6 +4,7 @@ export const CartContainer = styled.div`
   height: 100%;
   width: 100%;
   margin-bottom: 20px;
+  font-family: 'Roboto', sans-serif;
 `;
 
 export const DivTotal = styled.div`

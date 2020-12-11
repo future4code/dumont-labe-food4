@@ -1,6 +1,6 @@
 import React from 'react'
-import { Typography, IconButton } from '@material-ui/core'
-import { BaseContainer, FlexBox, Divisor, ProgressStyled, ButtonLogout, ButtonBox, ProfilePageContainer } from './profile-styles'
+import { IconButton, Typography } from '@material-ui/core'
+import { BaseContainer, FlexBox, Divisor, ProgressStyled, ButtonLogout, ButtonBox, ProfilePageContainer, Text } from './profile-styles'
 import OrdesHistoryCard from '../../components/OrdersHistoryCard/OrdersHistoryCard'
 import EditIcon from '@material-ui/icons/Edit';
 import { useHistory } from 'react-router-dom';
@@ -23,25 +23,25 @@ const ProfilePage = () => {
       <NavBar />
       <FlexBox>
         <BaseContainer>
-          <Typography variant="h6">{userData.user.name}</Typography>
+          <Text variant="h6">{userData.user.name}</Text>
           <IconButton onClick={() => goToEditProfile(history)}>
             <EditIcon/>
           </IconButton>
         </BaseContainer>
-        <Typography variant="h6">{userData.user.email}</Typography>
-        <Typography variant="h6">{userData.user.cpf}</Typography>
+        <Text variant="h6">{userData.user.email}</Text>
+        <Text variant="h6">{userData.user.cpf}</Text>
       </FlexBox>
       <FlexBox greyBackground>
         <BaseContainer>
-          <Typography color="textSecondary" variant="h6">Endereço cadastrado</Typography>
+          <Text color="textSecondary" variant="h6">Endereço cadastrado</Text>
           <IconButton onClick={() => goToAdress(history)}>
             <EditIcon/>
           </IconButton>
         </BaseContainer>
-        <Typography variant="h6">{userData.user.address}</Typography>
+        <Text variant="h6">{userData.user.address}</Text>
       </FlexBox>
       <FlexBox>
-        <Typography variant="h6">Histórico de pedidos</Typography>
+        <Text variant="h6">Histórico de pedidos</Text>
         <Divisor/>
       </FlexBox>
       {ordersHistory && ordersHistory.orders.map((order, id) => {

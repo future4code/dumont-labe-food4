@@ -15,4 +15,18 @@ export const LoginContainer = styled.div`
     margin: 0 auto;
     justify-content: center;
     padding: 1em;
+    font-family: 'Roboto', sans-serif;
+    font-size: 16px;
+    margin-top: 20px;
+`
+export const Button = styled.button`
+  display: block;
+  width: 350px;
+  height: 45px;
+  font-size: 16px;
+  padding: 12px 16px;
+  border-radius: 3px;
+  border: none;
+  background-color: #5cb646;
+  margin: auto;
 `

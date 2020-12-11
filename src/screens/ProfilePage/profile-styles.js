@@ -1,4 +1,4 @@
-import { CircularProgress } from '@material-ui/core'
+import { CircularProgress, Typography } from '@material-ui/core'
 import styled from 'styled-components'
 
 export const FlexBox = styled.div`
@@ -52,4 +52,7 @@ export const ButtonBox = styled.div`
 export const ProfilePageContainer = styled.div`
     height: 100%;
     margin-bottom: 76px;
+`
+export const Text = styled(Typography)`
+    font-size: 16px;
 `

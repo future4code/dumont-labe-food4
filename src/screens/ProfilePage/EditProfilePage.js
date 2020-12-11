@@ -1,6 +1,6 @@
-import { Button, TextField } from '@material-ui/core';
+import { TextField } from '@material-ui/core';
 import React, { useEffect } from 'react'
-import { FlexForm, LoginContainer } from './editprofile-styles';
+import { FlexForm, LoginContainer, Button } from './editprofile-styles';
 import { useForm } from '../../hooks/useForm'
 import NavBar from '../../components/NavBar/NavBar';
 import { useProtectedPage } from '../../hooks/useProtectedPage';
