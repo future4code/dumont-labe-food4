@@ -1,20 +1,19 @@
 import styled from "styled-components";
-import {TextField, Button} from "@material-ui/core";
+import {TextField} from "@material-ui/core";
 
 export const FormContainer = styled.form`
-  height: 640px;
-  padding: 0 0 36px;
+  height: 100%;
   display: flex;
+  padding-top: 10px;
   flex-direction: column;
   justify-content: center;
   align-items: center;
 `;
 
 export const Input = styled(TextField)`
-  width: 360px;
+  width: 380px;
   height: 72px;
-  margin: 58px 0 0;
-  padding: 0 16px 8px;
+  margin-bottom: 10px;
 `;
 
 export const Title = styled.p`
@@ -30,10 +29,14 @@ export const Title = styled.p`
   color: #000000;
 `;
 
-export const ButtonSave = styled(Button)`
-  width: 360px;
-  height: 42px;
+export const ButtonSave = styled.button`
+  display: block;
+  width: 380px;
+  height: 45px;
+  font-size: 18px;
   padding: 12px 16px;
-  border-radius: 2px;
+  border-radius: 3px;
+  border: none;
   background-color: #5cb646;
+  margin: auto;
 `

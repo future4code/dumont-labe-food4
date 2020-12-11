@@ -5,4 +5,5 @@ export const BottomNav = styled(BottomNavigation)`
     position: fixed;
     bottom:0px;
     width:100%;
+    border: 1px solid #b8b8b8;
 `

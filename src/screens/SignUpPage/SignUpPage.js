@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
 import { useHistory } from 'react-router-dom'
-import { TextField, Button, InputLabel, FormControl, FormHelperText, Typography } from '@material-ui/core';
+import { TextField, InputLabel, FormControl, FormHelperText, Typography } from '@material-ui/core';
 import { useForm } from '../../hooks/useForm';
 import { FlexForm } from './styles';
-import { LoginContainer, Logo } from '../LoginPage/styles';
+import { LoginContainer, Logo, Button } from '../LoginPage/styles';
 import OutlinedInput from '@material-ui/core/OutlinedInput';
 import InputAdornment from '@material-ui/core/InputAdornment';
 import Visibility from '@material-ui/icons/Visibility';
