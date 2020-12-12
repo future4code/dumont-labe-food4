@@ -9,7 +9,7 @@
 - Nicole Zolnier
 
 ### Link do Surge:
-https://futureEats4-dumont.surge.sh/
+https://future-eats4-dumont.surge.sh/
 
 ### O que funciona:
 - rotas
