@@ -1,18 +1,17 @@
 import { FormControl, InputAdornment } from '@material-ui/core'
 import React, { useEffect, useState } from 'react'
 import NavBar from '../../components/NavBar/NavBar'
-import RestaurantCard from '../../components/RestaurantCard'
+import RestaurantCard from '../../components/RestaurantCard/RestaurantCard'
 import { BASE_URL } from '../../constants/urls'
 import { useRequestData } from '../../hooks/useRequestData'
-import {FeedContainer, AllFeed, StyledOutlinedInput, SearchContainer, Carousel, CarouselContainer } from './styles'
-import {NavBottom} from "../../components/NavBottom/NavBottom"
+import { FeedContainer, AllFeed, StyledOutlinedInput, SearchContainer, Carousel, CarouselContainer } from './styles'
+import { NavBottom } from "../../components/NavBottom/NavBottom"
 import SearchIcon from '@material-ui/icons/Search';
 import { goToSearch } from '../../router/coordinator'
 import { useHistory } from 'react-router-dom'
 import { useProtectedPage } from '../../hooks/useProtectedPage'
-import SnackBar from '../../components/SnackBar/SnackBar'
+import SnackBar from '../../components/SnackBar'
 import axios from 'axios'
-import {axiosConfig} from '../../constants/urls'
 
 const FeedPage = () => {
   useProtectedPage()
@@ -21,8 +20,13 @@ const FeedPage = () => {
   const history = useHistory()
   const category = []
   const [choice, setChoice] = useState(false)
-  const [newCategory, setNewCategory]=useState("")
+  const [newCategory, setNewCategory] = useState("")
   const [open, setOpen] = useState(true);
+
+  const axiosConfig = {
+    headers: { auth: window.localStorage.getItem("token") },
+  }; 
+  
 
   getRestaurants &&
     getRestaurants.restaurants.map((item) => {
@@ -42,21 +46,21 @@ const FeedPage = () => {
 
   const getActiveOrder = () => {
     axios.get(`${BASE_URL}/active-order`, axiosConfig)
-        .then((response) => {
-            console.log(response.data)
+      .then((response) => {
+        console.log(response.data)
 
-            if(response.data.order === null) {
-              setOpen(false)
-            } else {
-              setOpen(true)
-              setOrderInfo(response.data.order)
-            }
-        })
-        .catch((erro) => {
-            console.log(erro);
-        });
+        if (response.data.order === null) {
+          setOpen(false)
+        } else {
+          setOpen(true)
+          setOrderInfo(response.data.order)
+        }
+      })
+      .catch((erro) => {
+        console.log(erro);
+      });
   }
-  
+
   return (
     <AllFeed>
       <NavBar />
@@ -72,50 +76,50 @@ const FeedPage = () => {
           />
         </FormControl>
       </SearchContainer>
-      
-      <CarouselContainer> 
-        <Carousel onClick={()=>setChoice(false)}> Todas</Carousel>
-         {filterCategorys.map((restaurantCategory) => {
-        return (
-          <Carousel key={restaurantCategory} onClick={()=>goToCategory(restaurantCategory)}> {restaurantCategory} </Carousel>
-        )
-      })}</CarouselContainer>
+
+      <CarouselContainer>
+        <Carousel onClick={() => setChoice(false)}> Todas</Carousel>
+        {filterCategorys.map((restaurantCategory) => {
+          return (
+            <Carousel key={restaurantCategory} onClick={() => goToCategory(restaurantCategory)}> {restaurantCategory} </Carousel>
+          )
+        })}</CarouselContainer>
 
       <FeedContainer>
-       {choice? 
+        {choice ?
           (getRestaurants && getRestaurants.restaurants.map((restaurant) => {
             if (newCategory === restaurant.category) {
               return (
-                <RestaurantCard 
+                <RestaurantCard
                   key={restaurant.id}
                   id={restaurant.id}
                   deliveryTime={restaurant.deliveryTime}
-                  shipping = {restaurant.shipping}
+                  shipping={restaurant.shipping}
                   name={restaurant.name}
                   image={restaurant.logoUrl}
                 />
               )
             }
-          }))       
-        :
-        (getRestaurants && getRestaurants.restaurants.map((restaurant) => {
-          return (
-            <RestaurantCard key={restaurant.id}
-              id={restaurant.id}
-              deliveryTime={restaurant.deliveryTime}
-              shipping = {restaurant.shipping}
-              name={restaurant.name}
-              image={restaurant.logoUrl}
-            />
+          }))
+          :
+          (getRestaurants && getRestaurants.restaurants.map((restaurant) => {
+            return (
+              <RestaurantCard key={restaurant.id}
+                id={restaurant.id}
+                deliveryTime={restaurant.deliveryTime}
+                shipping={restaurant.shipping}
+                name={restaurant.name}
+                image={restaurant.logoUrl}
+              />
+            )
+          })
           )
-        })
-        )
-      }
-       
+        }
+
       </FeedContainer>
       <SnackBar totalPrice={orderInfo.totalPrice} restaurant={orderInfo.restaurantName} open={open} />
-      
-      <NavBottom changeColorHome={true}/>
+
+      <NavBottom changeColorHome={true} />
     </AllFeed>
   )
 }

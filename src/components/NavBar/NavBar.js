@@ -14,7 +14,7 @@ const useStyles = makeStyles((theme) => ({
   title: {
     flexGrow: 1,
   },
-})); 
+}));
 
 const NavBar = () => {
   const classes = useStyles();
@@ -62,7 +62,7 @@ const NavBar = () => {
         </Route>
         <Route exact path={['/', '/home']}>
           <NavBarContainer>
-            <IconButton className={classes.menuButton} color="inherit" aria-label="menu"/>
+            <IconButton className={classes.menuButton} color="inherit" aria-label="menu" />
             <Title2>
               FutureEats
             </Title2>
@@ -70,7 +70,7 @@ const NavBar = () => {
         </Route>
         <Route exact path={'/cart'}>
           <NavBarContainer>
-            <IconButton className={classes.menuButton} color="inherit" aria-label="menu"/>
+            <IconButton className={classes.menuButton} color="inherit" aria-label="menu" />
             <Title2>
               Meu carrinho
             </Title2>
@@ -81,12 +81,12 @@ const NavBar = () => {
             <Title2>
               Meu Perfil
             </Title2>
-            </NavBarContainer>
+          </NavBarContainer>
         </Route>
         <Route exact path={'/search'}>
           <NavBarContainer>
             <IconButton onClick={() => goBack(history)} className={classes.menuButton} color="inherit" aria-label="menu">
-              <ArrowBackIosIcon  />
+              <ArrowBackIosIcon />
             </IconButton>
             <Title>
               Buscar
@@ -96,7 +96,7 @@ const NavBar = () => {
         <Route>
           <NavBarContainer>
             <IconButton onClick={() => goBack(history)} className={classes.menuButton} color="inherit" aria-label="menu">
-              <ArrowBackIosIcon  />
+              <ArrowBackIosIcon />
             </IconButton>
             <Title>
               FutureEats

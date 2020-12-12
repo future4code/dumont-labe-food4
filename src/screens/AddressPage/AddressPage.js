@@ -1,10 +1,10 @@
 import React, { useEffect } from "react";
-import { FormContainer, Input, ButtonSave } from "./styled";
+import { FormContainer, Input, ButtonSave } from "./styles";
 import { useForm } from "../../hooks/useForm"
 import { useHistory } from 'react-router-dom'
 import { addAdress } from "../../services/user"
 import { useProtectedPage } from "../../hooks/useProtectedPage"
-import {useRequestData} from '../../hooks/useRequestData'
+import { useRequestData } from '../../hooks/useRequestData'
 import { BASE_URL } from '../../constants/urls'
 import NavBar from "../../components/NavBar/NavBar";
 
@@ -12,9 +12,9 @@ const AddressPage = () => {
   useProtectedPage()
   const history = useHistory()
 
-  const { form, onChange, reset, setValues } = useForm({ street: "", number: "", neighbourhood: "", city: "", state: "", complement: ""})
+  const { form, onChange, reset, setValues } = useForm({ street: "", number: "", neighbourhood: "", city: "", state: "", complement: "" })
 
-  const getAllAddress = useRequestData(`${BASE_URL}/profile/address`,undefined)
+  const getAllAddress = useRequestData(`${BASE_URL}/profile/address`, undefined)
 
   const handleSubmission = (e) => {
     e.preventDefault()
@@ -23,7 +23,7 @@ const AddressPage = () => {
 
   }
 
-  useEffect(() =>{
+  useEffect(() => {
     getAllAddress && setValues(getAllAddress.address)
   }, [getAllAddress])
 

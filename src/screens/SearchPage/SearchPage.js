@@ -4,13 +4,17 @@ import NavBar from '../../components/NavBar/NavBar'
 import SearchIcon from '@material-ui/icons/Search'
 import { AllFeed, SearchContainer, StyledOutlinedInput, FeedContainer } from '../FeedPage/styles'
 import { BASE_URL } from '../../constants/urls'
-import RestaurantCard from '../../components/RestaurantCard';
+import RestaurantCard from '../../components/RestaurantCard/RestaurantCard';
 import axios from 'axios'
-import { axiosConfig } from '../../constants/urls'
 
 const SearchScreen = () => {
   const [search, setSearch] = useState("")
   const [restaurants, setRestaurants] = useState([])
+
+  const axiosConfig = {
+    headers: { auth: window.localStorage.getItem("token") },
+  }; 
+  
 
   const getRestaurants = () => {
     axios.get(`${BASE_URL}/restaurants`, axiosConfig)

@@ -8,7 +8,7 @@ export const FlexBox = styled.div`
     gap: 4px;
     flex-direction: column;
     align-items: flex-start;
-    background-color:${props => props.greyBackground ? "#EEEEEE" : "#FFF" };
+    background-color:${props => props.greyBackground ? "#EEEEEE" : "#FFF"};
 `
 
 export const BaseContainer = styled.div`
@@ -33,7 +33,7 @@ export const ProgressStyled = styled(CircularProgress)`
 
 export const ButtonLogout = styled.button`
   display: block;
-  width: 380px;
+  width: 100%;
   height: 45px;
   font-size: 18px;
   padding: 12px 16px;

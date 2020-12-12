@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import { TextField, Typography, OutlinedInput, InputAdornment, IconButton, FormControl, InputLabel } from '@material-ui/core'
-import { LoginContainer, FormContainer, Logo, Button } from "./styles"
+import { LoginContainer, FormContainer, Logo, Button, NoLogin } from "./styles"
 import logo from '../../assets/black-logo.svg'
 import { useForm } from '../../hooks/useForm'
 import { Visibility, VisibilityOff } from '@material-ui/icons'
@@ -65,7 +65,9 @@ const LoginPage = () => {
           Entrar
         </Button>
       </FormContainer>
-      <Typography onClick={() => goToSignUp(history)} align="center" variant="subtitle1">Não possui cadastro? Clique aqui</Typography>
+      <NoLogin>
+        <Typography p="2em" onClick={() => goToSignUp(history)} align="center" variant="subtitle1">Não possui cadastro? Clique aqui</Typography>
+      </NoLogin>
     </LoginContainer>
   );
 };

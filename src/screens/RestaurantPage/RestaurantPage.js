@@ -1,20 +1,20 @@
 import React, { useContext } from "react";
-import FoodCard from "../../components/FoodCard";
-import RestaurantCard from "../../components/RestaurantCard";
-import { RestaurantAll, RestaurantContainer } from "./styled";
+import FoodCard from "../../components/FoodCard/FoodCard";
+import RestaurantCard from "../../components/RestaurantCard/RestaurantCard";
+import { RestaurantAll, RestaurantContainer } from "./styles";
 import { useRequestData } from "../../hooks/useRequestData";
 import { BASE_URL } from "../../constants/urls";
 import { useParams } from "react-router-dom";
 import NavBar from "../../components/NavBar/NavBar";
 import {NavBottom} from "../../components/NavBottom/NavBottom"
 import GlobalStateContext from "../../global/GlobalStateContext";
-import OptionContext from "../../context/OptionContext";
+import QuantityContext from "../../context/QuantityContext";
 import RestaurantContext from "../../context/RestaurantContext";
 
 const RestaurantPage = () => {
   const { cart, setCart, updateTotal } = useContext(GlobalStateContext)
   const {setRestaurant} = useContext(RestaurantContext)
-  const { option, setOption } = useContext(OptionContext);
+  const { quantity, setQuantity } = useContext(QuantityContext);
   const category = [];
   const { id } = useParams();
   const getDetails = useRequestData(`${BASE_URL}/restaurants/${id}`, undefined);
@@ -22,12 +22,12 @@ const RestaurantPage = () => {
   const addItemToCart = (newItem) => {
     let newCart = [...cart];
 
-    newCart.push({ ...newItem, amount: option });
+    newCart.push({ ...newItem, amount: quantity });
     setRestaurant(getDetails.restaurant)
     setCart(newCart);
     alert(`${newItem.name} foi adicionado ao seu carrinho!`)
-    setOption(1)
-    updateTotal(newItem.price, option, true)
+    setQuantity(1)
+    updateTotal(newItem.price, quantity, true)
 
   };
 

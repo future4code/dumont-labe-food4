@@ -1,4 +1,4 @@
-import React, {  useContext } from "react";
+import React, { useContext } from "react";
 import Button from "@material-ui/core/Button";
 import Dialog from "@material-ui/core/Dialog";
 import DialogActions from "@material-ui/core/DialogActions";
@@ -8,7 +8,7 @@ import DialogTitle from "@material-ui/core/DialogTitle";
 import InputLabel from "@material-ui/core/InputLabel";
 import FormControl from "@material-ui/core/FormControl";
 import Select from "@material-ui/core/Select";
-import OptionContext from "../context/OptionContext";
+import QuantityContext from "../context/QuantityContext";
 import { IconButton } from '@material-ui/core';
 import CloseIcon from '@material-ui/icons/Close';
 import styled from 'styled-components';
@@ -19,10 +19,10 @@ const CloseButtonContainer = styled.div`
 `
 
 const AlertDialog = (props) => {
-  const {option, setOption} = useContext(OptionContext)
+  const { quantity, setQuantity } = useContext(QuantityContext)
 
   const handleSelect = (e) => {
-    setOption(e.target.value)
+    setQuantity(e.target.value)
   }
 
   const handleCart = () => {
@@ -39,10 +39,10 @@ const AlertDialog = (props) => {
       >
         <CloseButtonContainer>
           <IconButton edge="start" onClick={props.handleClose}>
-            <CloseIcon/>
+            <CloseIcon />
           </IconButton>
         </CloseButtonContainer>
-        
+
         <DialogTitle id="alert-dialog-title">
           Selecione a quantidade desejada
         </DialogTitle>
@@ -52,7 +52,7 @@ const AlertDialog = (props) => {
               <InputLabel htmlFor="outlined-age-native-simple">
                 Quantidade
               </InputLabel>
-              <Select required onChange={handleSelect} value={option} label="Quantidade">
+              <Select required onChange={handleSelect} value={quantity} label="Quantidade">
                 <option aria-label="None" disabled />
                 <option value={1}>1</option>
                 <option value={2}>2</option>

@@ -1,6 +1,11 @@
 import axios from 'axios'
-import { BASE_URL, axiosConfig } from '../constants/urls'
+import { BASE_URL } from '../constants/urls'
 import { goToAdress, goToFeed } from '../router/coordinator'
+
+const axiosConfig = {
+  headers: { auth: window.localStorage.getItem("token") },
+}; 
+
 
 export const signUp = (body, history) => {
     axios.post(`${BASE_URL}/signup`, body)
